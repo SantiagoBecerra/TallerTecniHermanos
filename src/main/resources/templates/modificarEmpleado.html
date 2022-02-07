@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="styles/style.css" />
+
+<title>Tecnimecanica Hermanos</title>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand"> <img src="/images/LogoColegio.png" alt=""
+			width="80" height="84"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active card-title"
+						aria-current="page" href="/">Taller Automotriz<br>
+							Tecnimecanica <br> Hemanos
+					</a></li>
+				</ul>
+			</div>
+		<ul class="nav justify-content-end">
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="#">INICIO</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">NOSOTROS</a></li>
+
+				<li class="nav-item"><a class="navbar-brand"> <img
+						src="/images/LogoColegio.png" alt="" width="40" height="40"
+						href="#">SALIR
+				</a></li>
+			</ul>
+		</ul>
+	</div>
+</nav>
+</head>
+<body>
+
+	<div class="  center card text-center">
+		<h3 class="mt-4">REGISTRAR DOCENTE</h3>
+		<div class="container mt-4 mb-4">
+			<div class="row">
+				<div class="col">
+					<div class="col mt-4">
+						<form th:action="@{/ActualizarEmpleado(nd,nb,pa,tf,dc,te)}">
+						<div th:each="doce:${docente}">
+							<div class="mb-4 mt-4">
+								<input class="form-control" id="nd" name="nd"
+									th:value="${doce.documento}"
+									th:placeholder="${doce.documento}">
+							</div>
+							<div class="mb-4 mt-4">
+								<input class="form-control" id="nb" name="nb"
+									th:value="${doce.nombres}" th:placeholder="${doce.nombres}">
+							</div>
+							<div class="mb-4 mt-4">
+								<input class="form-control" id="ap" name="ap"
+									th:value="${doce.apellidos}"
+									th:placeholder="${doce.apellidos}">
+							</div>
+							<div class="mb-4 mt-4">
+								<input class="form-control" id="tf" name="tf"
+									th:value="${doce.telefono}" th:placeholder="${doce.telefono}">
+							</div>
+							<div class="mb-4 mt-4">
+								<input class="form-control" id="dc" name="dc"
+									th:value="${doce.direccion}" th:placeholder="${doce.direccion}">
+							</div>
+							 <div class="mb-4 mt-4">
+           					 <select name="te" id="te" class="form-select" aria-label="Default select example">
+								<option  name="te" id="te" value="M" required>Mecanico</option>
+								<option  name="te" id="te" value="A" required>Ayudante</option>
+            				 </select>
+ 							</div>
+
+							<button type="submit" class="btn btn-primary">Actualizar</button>
+							<button type="button" class="btn btn-primary">
+								<a th:href="@{/GestionarEmpleados}" class="btn-primary"
+									style="color: #FF0000">Cancelar</a>
+							</button>
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</div>
+	</div>
+
+	</div>
+
+</body>
+
+<footer>
+	<div class="card-footer text-muted  card text-center">
+		INSTITUCIÓN EDUCATIVA TÉCNICA DIEGO DE TORRES <br> TURMEQUE <br>
+		COPYRIGHT © 2021. TODOS LOS DERECHOS RESERVADOS
+	</div>
+</footer>
+
+</html>

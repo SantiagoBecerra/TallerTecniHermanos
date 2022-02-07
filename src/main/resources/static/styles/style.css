@@ -1,0 +1,31 @@
+
+html, body{
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  margin :0;
+}
+#div1{
+  height: 80px;
+  width: 100%;
+  background-color: red;
+  justify-content: center;
+  align-content: center;
+}
+
+#div2{
+  height:100%;
+  width: 100%;
+  background-color: green;
+}
+
+.center{
+	width:100vw;
+	height:100vh; 
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
