@@ -49,43 +49,29 @@
 </head>
 <body>
 
-	<div class="  center card text-center">
-		<h3 class="mt-4">MODIFICAR CLIENTE</h3>
+	<div class="  center card text-center" th:each="doce:${vehiculo}">
+	<h3 class="mt-4" th:text=" ${doce.placa} "></h3>
+		<h3 class="mt-4" th:text=" ${doce.marca}"></h3>
+		<h3 class="mt-4" th:text=" ${doce.modelo} "></h3>
+		<h3 class="mt-4" th:text=" ${doce.color} "></h3>
+		<h3 class="mt-4" th:text=" ${doce.anio} "></h3>
+		<h3 class="mt-4" th:text=" ${doce.descripcion} "></h3>
+		<h3> ORDENES DE REPARACIONES</h3>
+		<div class="center card text-center" th:each="cliente:${vehiculos}" text= "Vehiculos">
+		<h2 class="mt-4" th:text="Vehiculos"></h2>
+		<h3 class="mt-2" th:text="${cliente.placa}"></h3>
+		<h3 class="mt-2" th:text="${cliente.marca}"></h3>
+		<h3 class="mt-2" th:text="${cliente.modelo}"></h3>
+		<h3 class="mt-2" th:text="${cliente.color}"></h3>
+		</div>
 		<div class="container mt-4 mb-4">
 			<div class="row">
 				<div class="col">
 					<div class="col mt-4">
-						<form th:action="@{/ActualizarCliente(nd,nb,pa,tf)}">
-						<div th:each="doce:${docente}">
-							<div class="mb-4 mt-4">
-								<input class="form-control" id="nd" name="nd"
-									th:value="${doce.documento}"
-									th:placeholder="${doce.documento}">
-							</div>
-							<div class="mb-4 mt-4">
-								<input class="form-control" id="nb" name="nb"
-									th:value="${doce.nombres}" th:placeholder="${doce.nombres}">
-							</div>
-							<div class="mb-4 mt-4">
-								<input class="form-control" id="ap" name="ap"
-									th:value="${doce.apellidos}"
-									th:placeholder="${doce.apellidos}">
-							</div>
-							<div class="mb-4 mt-4">
-								<input class="form-control" id="tf" name="tf"
-									th:value="${doce.telefono}" th:placeholder="${doce.telefono}">
-							</div>
-							<div class="mb-4 mt-4">
-								<input class="form-control" id="dc" name="dc"
-									th:value="${doce.direccion}" th:placeholder="${doce.direccion}">
-							</div>
-
-							<button type="submit" class="btn btn-primary">Actualizar</button>
 							<button type="button" class="btn btn-primary">
-								<a th:href="@{/GestionarClientes}" class="btn-primary">Cancelar</a>
+								<a th:href="@{/GestionarVehiculos}" class="btn-primary">Volver</a>
 							</button>
 						</div>
-					</form>
 					</div>
 				</div>
 			</div>

@@ -33,7 +33,7 @@
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a class="nav-link " aria-current="page" th:href="@{/inicioAdmin}">INICIO</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">NOSOTROS</a></li>
-					<li class="nav-item"><a class="nav-link" href="@{/}"> SALIR</a>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}"> SALIR</a>
 					</li>
 				</ul>
 			</ul>
@@ -109,7 +109,7 @@
 								<td th:text="${estudiante.costo_total}"></td>
 								<td><button class="butonEdit"><a  th:href="@{/ModificarOrden(nd=${estudiante.id_orden})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></button></td>
 								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarOrden(nd=${estudiante.id_orden})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>							
-								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarOrden(nd=${estudiante.id_orden})}" class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a></button></td>
+								<td><button class="butonEdit"><a  th:href="@{/VerOrden(nd=${estudiante.id_orden})}" class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a></button></td>
 							
 							</tr>
 						</tbody>

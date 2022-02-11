@@ -256,6 +256,13 @@ public class CrudController {
 		return gestionarVehiculos(model);
 	} 
 	
+	@RequestMapping("/VerVehiculo")
+	public String verVehiculo(Model model,@RequestParam("nd") String idDocente){
+		Vehiculo vehiculo = generalService.getVehiculoById(idDocente);
+		model.addAttribute("vehiculo",vehiculo);
+		return "verVehiculo";
+	} 
+	
 	@RequestMapping("/ModificarVehiculo")
 	public String modificarVehiculo(Model model,@RequestParam("nd") String idDocente){
 		Vehiculo docente = generalService.getVehiculoById(idDocente);
