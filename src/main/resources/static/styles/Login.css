@@ -8,7 +8,7 @@ html {
 .user_card {
     height:500px;
     width: 450px;
-    margin-top: auto;
+    margin-top: 50px;
     margin-bottom: auto;
     background: #ffffff;
     position: relative;
@@ -53,6 +53,14 @@ html {
 .login_container {
     margin-top: 40px;
  
+}
+
+img {
+	margin-top: -150px;
+	margin-left: -50px;
+    max-width: 200%;
+    height: 200;
+    width: 100; /* Bug de ie8 */
 }
 
 button{
