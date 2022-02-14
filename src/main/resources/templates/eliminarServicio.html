@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<title>Tecnimecanica Hermanos</title>
+</head>
+<body>
+
+
+	<h1>desea eliminar este Servicio?:</h1>
+
+	<h1 th:text="${numeroDocumento}">}</h1>
+	
+	<div>
+		<a th:href="@{/EliminarServicio(nd=${numeroDocumento})}"
+			class="btn btn-primary">Eliminar</a>
+	</div>
+	<div>
+		<a th:href="@{/GestionarServicios}" class="btn btn-primary">Cancelar</a>
+	</div>
+</body>
+
+<footer>
+ <div class="card-footer text-muted  card text-center">
+    Taller Automotriz <br> Tecnimecanica Hermanos <br> COPYRIGHT © 2021. TODOS LOS DERECHOS RESERVADOS  
+  </div>
+ </footer>
+</html>

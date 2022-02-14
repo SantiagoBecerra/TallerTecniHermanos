@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	  <link rel="stylesheet" href="styles/styleGestionarEstudiante.css"/>
+	
+<title>Tecnimecanica Hermanos</title>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand"> <img src="/images/LogoColegio.png"
+				alt="" width="80" height="84"></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active card-title"
+						aria-current="page" href="/">Taller Automotriz<br>
+							Tecnimecanica <br> Hemanos
+					</a></li>
+				</ul>
+			</div>
+			<ul class="nav justify-content-end">
+				<ul class="nav nav-tabs">
+					<li class="nav-item"><a class="nav-link " aria-current="page" th:href="@{/inicioAdmin}">INICIO</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">NOSOTROS</a></li>
+					<li class="nav-item"><a class="nav-link active" th:href="@{/}"> SALIR</a>
+					</li>
+				</ul>
+			</ul>
+		</div>
+	</nav>
+</head>
+<body>
+
+<div class="  center text-center">
+	<h3 class="mt-4">Gestionar Repuestos</h3>
+	<div class="container mt-4 mb-4">
+	    <div class="row">
+		    <div class="col-md-auto">
+		      
+		    	<div class="card" style="width: 18rem;">
+				  <img src="images/gestionarRpuestos.jpg" class="card-img-top" alt="...">
+				  <div class="card-body">
+				    <a th:href="@{/RegistrarRepuesto}" class="btn btn-primary">Registrar</a>
+				  </div>
+				</div>
+
+		    </div>
+		    <div class="col">
+		      
+		    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				  <div class="container-fluid">
+				    
+				    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				        
+				        <li class="nav-item dropdown">
+				          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				            Nombre
+				          </a>
+				          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+				            <li><a class="dropdown-item" href="#">Action</a></li>
+				            <li><a class="dropdown-item" href="#">Another action</a></li>
+				            <li><hr class="dropdown-divider"></li>
+				            <li><a class="dropdown-item" href="#">Something else here</a></li>
+				          </ul>
+				        </li>
+				      </ul>
+				      <form class="d-flex">
+				        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				        <button class="btn btn-outline-dark" type="submit">Search</button>
+				      </form>
+				    </div>
+				  </div>
+				</nav>
+
+				<div class="datagrid mt-4">
+					<table>
+						<thead>
+							<tr>
+								<th>Numero Repuesto</th>
+								<th>Nombre</th>
+								<th>Costo Unitario</th>
+								<th>Cantidad Inventario</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
+							</tr>
+						</thead>
+						<tbody  th:each="estudiante:${estudiantes}">
+							<tr>
+								<td th:text="${estudiante.id_repuesto}"></td>
+								<td th:text="${estudiante.nombre_repuesto}"></td>
+								<td th:text="${estudiante.costo_unitario}"></td>
+								<td th:text="${estudiante.cantidad_inventario}"></td>
+								<td><button class="butonEdit"><a  th:href="@{/ModificarRepuesto(nb=${estudiante.id_repuesto})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></button></td>
+								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarRepuesto(nd=${estudiante.id_repuesto})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+		    </div>
+	    </div>
+	</div>
+
+</div>
+
+</body>
+
+<footer>
+ <div class="card-footer text-muted  card text-center">
+    Taller Automotriz <br> Tecnimecanica Hermanos <br> COPYRIGHT © 2021. TODOS LOS DERECHOS RESERVADOS  
+  </div>
+ </footer>
+
+</html>

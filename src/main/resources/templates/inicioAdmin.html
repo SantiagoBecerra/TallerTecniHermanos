@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="styles/styleInicioAdmin.css" />
+
+<title>Tecnimecanica Hermanos</title>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand"> <img src="/images/LogoColegio.png" alt=""
+			width="80" height="84"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item"><a class="nav-link active card-title"
+					aria-current="page" href="/">Taller Automotriz<br>
+						Tecnimecanica <br> Hemanos
+				</a></li>
+			</ul>
+		</div>
+		<ul class="nav justify-content-end">
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active" aria-current="page"
+					href="#">INICIO</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">NOSOTROS</a></li>
+
+				<li class="nav-item"><a class="nav-link " href="#">SALIR</a>
+				</li>
+			</ul>
+		</ul>
+	</div>
+</nav>
+</head>
+<body>
+
+	<div class="center ">
+		<h3 class="mt-4 text-center">Administrador</h3>
+		<div class="container">
+			<div class="row mt-4">
+				<div class="col-md-3">
+					<a th:href="@{/GestionarClientes}">
+						<div class="card">
+							<img src="images/gestionarClientes.png" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-title" align="center">Gestionar Clientes</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3">
+					<a th:href="@{/GestionarEmpleados}">
+						<div class="card">
+							<img src="images/gestionarEmpleados.png" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-title" align="center">Gestionar Empleados</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3">
+					<a th:href="@{/GestionarVehiculos}">
+						<div class="card">
+							<img src="images/gestionarVehiculos.png" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-title" align="center">Gestionar Vehiculos</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3">
+					<a th:href="@{/GestionarServicios}">
+						<div class="card">
+							<img src="images/gestionarServicios.jpg" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-title" align="center">Gestionar Servicios</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3">
+					<a th:href="@{/GestionarRepuestos}">
+						<div class="card">
+							<img src="images/gestionarRpuestos.jpg" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-title" align="center">Gestionar Repuestos</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-3">
+					<a th:href="@{/GestionarOrdenes}">
+						<div class="card">
+							<img src="images/gestionarOrdenes.png" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-title" align="center">Orden de Reparacion</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3">
+					<a th:href="@{/GestionarInventario}">
+						<div class="card">
+							<img src="images/gestionarInventario.jpg" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-title" align="center">Gestionar Inventario</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
