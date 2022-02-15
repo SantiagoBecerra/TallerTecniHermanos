@@ -106,7 +106,7 @@ public class CrudController {
 	@RequestMapping("/VerCliente")
 	public String verCliente(Model model,@RequestParam("nd") String idDocente){
 		Personas cliente = generalService.getClienteById(idDocente);
-		model.addAttribute("docente",cliente);
+		model.addAttribute("clientes",cliente);
 		List<Vehiculo> vehiculos = generalService.getVehiculoByIdPersona(cliente.getId_persona()+"");
 		model.addAttribute("vehiculos",vehiculos);
 		return "verCliente";

@@ -49,7 +49,7 @@
 </head>
 <body>
 
-	<div class="  center card text-center" th:each="doce:${docente}">
+	<div class="  center card text-center" th:each="doce:${clientes}">
 	<h3 class="mt-4" th:text=" ${doce.id_persona} "></h3>
 		<h3 class="mt-4" th:text=" ${doce.nombres}  + ${doce.apellidos} "></h3>
 		<h3 class="mt-4" th:text=" ${doce.documento} "></h3>

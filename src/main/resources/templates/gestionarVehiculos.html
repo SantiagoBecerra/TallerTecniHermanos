@@ -91,7 +91,7 @@
 	    <div class="row">
 		    <div class="col-md-auto">
 		      
-		    	<div class="card" style="width: 18rem;">
+		    	<div class="card" style="width: 15rem;">
 				  <img src="images/gestionarVehiculos.png" class="card-img-top" alt="...">
 				  <div class="card-body">
 				    <a th:href="@{/RegistrarVehiculo}" class="btn btn-primary">Registrar</a>
@@ -126,11 +126,8 @@
 				    </div>
 				  </div>
 				</nav>
-
-
-				
-				<div class="datagrid mt-4">
-					<table>
+				<div class="datagrid">
+					<table class = "content-table">
 						<thead>
 							<tr>
 								<th>Placa</th>
@@ -144,17 +141,17 @@
 								<th>Ver</th>
 							</tr>
 						</thead>
-						<tbody  th:each="estudiante:${estudiantes}">
+						<tbody  th:each="vehiculo:${vehiculos}">
 							<tr>
-								<td th:text="${estudiante.placa}"></td>
-								<td th:text="${estudiante.modelo}"></td>
-								<td th:text="${estudiante.marca}"></td>
-								<td th:text="${estudiante.color}"></td>
-								<td th:text="${estudiante.anio}"></td>
-								<td th:text="${estudiante.personas.nombres}"></td>
-								<td><button class="butonEdit"><a  th:href="@{/ModificarVehiculo(nd=${estudiante.placa})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></button></td>
-								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarVehiculo(nd=${estudiante.placa})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>							
-								<td><button class="butonEdit"><a  th:href="@{/VerVehiculo(nd=${estudiante.placa})}" class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a></button></td>
+								<td th:text="${vehiculo.placa}"></td>
+								<td th:text="${vehiculo.modelo}"></td>
+								<td th:text="${vehiculo.marca}"></td>
+								<td th:text="${vehiculo.color}"></td>
+								<td th:text="${vehiculo.anio}"></td>
+								<td th:text="${vehiculo.personas.nombres}"></td>
+								<td><button class="butonEdit"><a  th:href="@{/ModificarVehiculo(nd=${vehiculo.placa})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></button></td>
+								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarVehiculo(nd=${vehiculo.placa})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>
+								<td><button class="butonEdit"><a  th:href="@{/VerVehiculo(nd=${vehiculo.placa})}" class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a></button></td>
 							
 							</tr>
 						</tbody>

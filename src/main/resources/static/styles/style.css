@@ -20,8 +20,8 @@ html, body{
 }
 
 .center{
-	width:100vw;
-	height:100vh; 
+    margin-left:20%;
+    margin-top:-45%;
 }
 * {
 	margin: 0;
