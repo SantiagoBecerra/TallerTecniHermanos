@@ -86,8 +86,8 @@ public class CrudController {
 	
 	@RequestMapping("/GestionarClientes")
 	public String gestionarClientes(Model model){
-		List<Personas> docentes = generalService.getClientes();
-		model.addAttribute("estudiantes",docentes);
+		List<Personas> clientes = generalService.getClientes();
+		model.addAttribute("clientes",clientes);
 		return "gestionarClientes";
 	} 
 	
@@ -237,8 +237,8 @@ public class CrudController {
 	
 	@RequestMapping("/GestionarVehiculos")
 	public String gestionarVehiculos(Model model){
-		List<Vehiculo> docentes = generalService.getVehiculos();
-		model.addAttribute("estudiantes",docentes);
+		List<Vehiculo> vehiculos = generalService.getVehiculos();
+		model.addAttribute("vehiculos",vehiculos);
 		return "gestionarVehiculos";
 	} 
 	

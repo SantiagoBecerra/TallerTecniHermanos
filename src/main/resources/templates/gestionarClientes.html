@@ -83,9 +83,6 @@
 				    </div>
 				  </div>
 				</nav>
-
-
-				
 				<div class="datagrid mt-4">
 					<table>
 						<thead>
@@ -99,15 +96,15 @@
 								<th>Ver</th>
 							</tr>
 						</thead>
-						<tbody  th:each="estudiante:${estudiantes}">
+						<tbody  th:each="cliente:${clientes}">
 							<tr>
-								<td th:text="${estudiante.id_persona}"></td>
-								<td th:text="${estudiante.nombres}"></td>
-								<td th:text="${estudiante.apellidos}"></td>
-								<td th:text="${estudiante.nombres}"></td>
-								<td><button class="butonEdit"><a  th:href="@{/ModificarCliente(nb=${estudiante.documento})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></button></td>
-								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarCliente(nd=${estudiante.documento})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>
-								<td><button class="butonEdit"><a  th:href="@{/VerCliente(nd=${estudiante.documento})}" class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a></button></td>
+								<td th:text="${cliente.id_persona}"></td>
+								<td th:text="${cliente.nombres}"></td>
+								<td th:text="${cliente.apellidos}"></td>
+								<td th:text="${cliente.nombres}"></td>
+								<td><button class="butonEdit"><a  th:href="@{/ModificarCliente(nb=${cliente.documento})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></a></button></td>
+								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarCliente(nd=${cliente.documento})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>
+								<td><button class="butonEdit"><a  th:href="@{/VerCliente(nd=${cliente.documento})}" class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a></button></td>
 							</tr>
 						</tbody>
 					</table>
