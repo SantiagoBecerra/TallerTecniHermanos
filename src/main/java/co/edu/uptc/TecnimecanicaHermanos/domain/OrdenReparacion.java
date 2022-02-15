@@ -99,5 +99,25 @@ public class OrdenReparacion {
 	public void setPlaca(Vehiculo placa) {
 		this.placa = placa;
 	}
+
 	
+	
+	
+//	esta es una prueba
+	
+	//CHIUSSSJSJSJSJ
+	
+	// prueba 3 ajajajdfbsreberwhgh4wrhwtrhjjjwtrjtrj
+	
+	//prueba 5555ewfefffssssvvvvv adaksdlasdjlasjdklas
+	
+
+	//RAMA MASTER
+
+	//PRUEBAAAAA
+
+	
+
+	//BLA bbbbbaa
+
 }
