@@ -85,13 +85,12 @@
     </div>
   </div>
 
-<div class="  center text-center">
+<div class=" center text-center">
 	<h3 class="mt-4">Gestionar Vehiculos</h3>
 	<div class="container mt-4 mb-4">
 	    <div class="row">
 		    <div class="col-md-auto">
-		      
-		    	<div class="card" style="width: 15rem;">
+		    	<div class="card" style="width: 10rem;">
 				  <img src="images/gestionarVehiculos.png" class="card-img-top" alt="...">
 				  <div class="card-body">
 				    <a th:href="@{/RegistrarVehiculo}" class="btn btn-primary">Registrar</a>
@@ -100,34 +99,19 @@
 
 		    </div>
 		    <div class="col">
-		      
 		    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				  <div class="container-fluid">
-				    
 				    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				        
-				        <li class="nav-item dropdown">
-				          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				            Nombre
-				          </a>
-				          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-				            <li><a class="dropdown-item" href="#">Action</a></li>
-				            <li><a class="dropdown-item" href="#">Another action</a></li>
-				            <li><hr class="dropdown-divider"></li>
-				            <li><a class="dropdown-item" href="#">Something else here</a></li>
-				          </ul>
-				        </li>
 				      </ul>
 				      <form class="d-flex">
-				        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-				        <button class="btn btn-outline-dark" type="submit">Search</button>
+				        <input type="search" id= "myInput" onkeyup='tableSearch()' placeholder="Buscar por placa">
 				      </form>
 				    </div>
 				  </div>
 				</nav>
 				<div class="datagrid">
-					<table class = "content-table">
+					<table class = "content-table" id = "myTable">
 						<thead>
 							<tr>
 								<th>Placa</th>
@@ -149,7 +133,7 @@
 								<td th:text="${vehiculo.color}"></td>
 								<td th:text="${vehiculo.anio}"></td>
 								<td th:text="${vehiculo.personas.nombres}"></td>
-								<td><button class="butonEdit"><a  th:href="@{/ModificarVehiculo(nd=${vehiculo.placa})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></button></td>
+								<td><button class="butonEdit"><a  th:href="@{/ModificarVehiculo(nd=${vehiculo.placa})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></a></button></td>
 								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarVehiculo(nd=${vehiculo.placa})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>
 								<td><button class="butonEdit"><a  th:href="@{/VerVehiculo(nd=${vehiculo.placa})}" class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a></button></td>
 							
@@ -162,6 +146,26 @@
 	</div>
 
 </div>
+<script type="application/javascript">
+	function tableSearch() {
+		let input, filter, table, tr, td, txtValue;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = document.getElementsByTagName("tr");
+		for (let i=0;i<tr.length;i++){
+			td = tr[i].getElementsByTagName("td")[0];
+			if(td){
+				txtValue = td.textContent || td.innerText;
+				if(txtValue.toUpperCase().indexOf(filter)>-1){
+					tr[i].style.display= "";
+				}else{
+					tr[i].style.display = "none"
+				}
+			}
+		}
+	}
+</script>
 
 </body>
 

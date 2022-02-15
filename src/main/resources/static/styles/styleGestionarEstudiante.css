@@ -6,10 +6,8 @@ html {
     background: #ffffff important;
 }
 .card{
-	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
-    margin-top: 15%;
+    margin-top: 30%;
+	background-color: transparent;
 }
 .imagesEdi {
     height: 20px;
@@ -35,7 +33,7 @@ html {
 }
 .card-body a{
 	height: 50%;
-    width:50%;
+    width:100%;
     background: #00334e !important;
     color: white !important;
 }
@@ -45,7 +43,7 @@ html {
 	width: 100%; 
 } */
 .datagrid {
-	height:40%;
+	height:100%;
     width:100%;
 	overflow-y: scroll;
 }
@@ -93,8 +91,9 @@ html {
 .content-table{
 	border-collapse: collapse;
 	font-size: 0.9em;
-	min-width: 300px;
+	width: 100%;
 	border-radius: 5px 5px 0 0;
+	position: static;
 	box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
 .content-table thead tr{
@@ -114,6 +113,9 @@ html {
 }
 .content-table tbody tr:last-of-type{
 	border-bottom: 2px solid #0094C9;
+}
+.navbar-collapse{
+	width: 100%;
 }
 /*.content-table tbody tr.active-row{
 	font-weight: bold;

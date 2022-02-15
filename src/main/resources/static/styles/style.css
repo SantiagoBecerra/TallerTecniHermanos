@@ -5,23 +5,14 @@ html, body{
   height:100%;
   margin :0;
 }
-#div1{
-  height: 80px;
-  width: 100%;
-  background-color: red;
-  justify-content: center;
-  align-content: center;
+
+
+.center-1{
+  margin-left:15%;
+  margin-top:-50%;
 }
 
-#div2{
-  height:100%;
-  width: 100%;
-  background-color: green;
-}
-
-.center{
-    margin-left:20%;
-    margin-top:-45%;
+.center-2{
 }
 * {
 	margin: 0;
