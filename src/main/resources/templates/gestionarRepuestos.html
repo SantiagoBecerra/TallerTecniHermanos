@@ -10,37 +10,80 @@
 	  <link rel="stylesheet" href="styles/styleGestionarEstudiante.css"/>
 	
 <title>Tecnimecanica Hermanos</title>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container-fluid">
-			<a class="navbar-brand"> <img src="/images/LogoColegio.png"
-				alt="" width="80" height="84"></a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active card-title"
-						aria-current="page" href="/">Taller Automotriz<br>
-							Tecnimecanica <br> Hemanos
-					</a></li>
-				</ul>
-			</div>
-			<ul class="nav justify-content-end">
-				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link " aria-current="page" th:href="@{/inicioAdmin}">INICIO</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">NOSOTROS</a></li>
-					<li class="nav-item"><a class="nav-link active" th:href="@{/}"> SALIR</a>
-					</li>
-				</ul>
-			</ul>
-		</div>
-	</nav>
+	
 </head>
 <body>
+
+ <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 15%; height : 100%;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+     <img src="images/logoColegio.png" class="card-img-top"
+								alt="...">
+    </a>
+    <hr class="barra">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white" aria-current="page">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/GestionarClientes}" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          Clientes
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/GestionarEmpleados}" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+          Empleados
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/GestionarVehiculos}" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+          Vehiculos
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/GestionarServicios}" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          Servicios
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/GestionarRepuestos}" class="nav-link active">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          Repuestos
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/GestionarOrdenes}" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          Ordenes
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/GestionarInventario}" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          Inventario
+        </a>
+      </li>
+      
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="images/icon.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>Administrador</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">Configuracion</a></li>
+        <li><a class="dropdown-item" href="#">Perfil</a></li>
+        <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+      </ul>
+    </div>
+  </div>
 
 <div class="  center text-center">
 	<h3 class="mt-4">Gestionar Repuestos</h3>
@@ -116,10 +159,5 @@
 
 </body>
 
-<footer>
- <div class="card-footer text-muted  card text-center">
-    Taller Automotriz <br> Tecnimecanica Hermanos <br> COPYRIGHT © 2021. TODOS LOS DERECHOS RESERVADOS  
-  </div>
- </footer>
 
 </html>
