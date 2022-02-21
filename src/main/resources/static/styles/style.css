@@ -9,7 +9,40 @@ html, body{
 
 .center-1{
   margin-left:15%;
-  margin-top:-50%;
+  margin-top:-40%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+.center-2{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+
+.center-3{
+  margin-left:-3%;
+  margin-top:0%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+.text-center{
+	margin-left: 4%;
+	margin-right: 10%;
+}
+
+.btn-group{
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.flexbox {
+  
+
 }
 
 .center-2{

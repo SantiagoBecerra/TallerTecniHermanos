@@ -259,7 +259,9 @@ public class CrudController {
 	@RequestMapping("/VerVehiculo")
 	public String verVehiculo(Model model,@RequestParam("nd") String idDocente){
 		Vehiculo vehiculo = generalService.getVehiculoById(idDocente);
+		List<OrdenReparacion> rep = generalService.getOrdenReparacionByPlaca(vehiculo.getPlaca());
 		model.addAttribute("vehiculo",vehiculo);
+		model.addAttribute("reparaciones",rep);
 		return "verVehiculo";
 	} 
 	
@@ -353,4 +355,6 @@ public class CrudController {
 			model.addAttribute("numeroDocumento",cliente.getId_orden());
 			return  "eliminarOrden";
 		} 
+		
+		
 }
