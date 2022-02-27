@@ -16,6 +16,7 @@ import co.edu.uptc.TecnimecanicaHermanos.domain.Servicios;
 import co.edu.uptc.TecnimecanicaHermanos.domain.Vehiculo;
 import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryOrdenReparacion;
 import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryPersonas;
+import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryRepuestoReparaciones;
 import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryRepuestos;
 import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryServicios;
 import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryVehiculos;
@@ -27,15 +28,16 @@ public class GeneralServices {
 	public final GeneralRepositoryRepuestos generalRepositoryRepuestos;
 	public final GeneralRepositoryVehiculos generalRepositoryVehiculos;
 	public final GeneralRepositoryOrdenReparacion generalRepositoryOrdenReparacion;
-
+	public final GeneralRepositoryRepuestoReparaciones generalRepositoryRepuestoReparacion;
 
 	public GeneralServices(GeneralRepositoryPersonas generalRepository,GeneralRepositoryServicios generalRepositoryServicios,GeneralRepositoryRepuestos generalRepositoryRepuestos
-			,GeneralRepositoryVehiculos generalRepositoryVehiculos,GeneralRepositoryOrdenReparacion generalRepositoryOrdenReparacion) {
+			,GeneralRepositoryVehiculos generalRepositoryVehiculos,GeneralRepositoryOrdenReparacion generalRepositoryOrdenReparacion,GeneralRepositoryRepuestoReparaciones generalRepositoryRepuestoReparacion) {
 		this.generalRepositoryPersonas = generalRepository;
 		this.generalRepositoryServicios = generalRepositoryServicios;
 		this.generalRepositoryRepuestos=generalRepositoryRepuestos;
 		this.generalRepositoryVehiculos=generalRepositoryVehiculos;
 		this.generalRepositoryOrdenReparacion=generalRepositoryOrdenReparacion;
+		this.generalRepositoryRepuestoReparacion=generalRepositoryRepuestoReparacion;
 	}
 
 	public Personas getUsuarioLogin(String usuario,String contrasenia){
@@ -186,9 +188,22 @@ public class GeneralServices {
 	public OrdenReparacion getOrdenReparacionById(String id){
 		return generalRepositoryOrdenReparacion.getOrdenReparacionById(id);
 	}
+	
+	public List<OrdenReparacion> getOrdenReparacionByPlaca(String id){
+		return generalRepositoryOrdenReparacion.getOrdenReparacionByPlaca(id);
+	}
 
 	public void actualizarOrdenReparacion(int idOrden ,String diagnostico,int costoTotal) {
 		generalRepositoryOrdenReparacion.actualizarOrdenReparacion(idOrden, diagnostico, costoTotal);
 	}  
-
+	
+	//----------------------------------Repuestos Reparacion---------------------------------------------
+	
+	public void registrarRepuestoReparacion(int cantidad,int idRepuesto,int idReparacion){
+		generalRepositoryRepuestoReparacion.registrarRepuestoReparacion(cantidad, idRepuesto, idReparacion);
+	}
+	
+	public void getRepuestoReparacionById(String idReparacion){
+		generalRepositoryRepuestoReparacion.getRepuestoReparacionById(idReparacion);
+	}
 }
