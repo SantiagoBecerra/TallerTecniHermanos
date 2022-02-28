@@ -65,7 +65,7 @@ html {
 	margin-left:20%;
 	margin-top:-45%;
 	width:70%;
-	height:70%; 
+	height:100%;
 	align-content: right;
 }
 .content-table{
@@ -97,7 +97,18 @@ html {
 .navbar-collapse{
 	width: 100%;
 }
-
+.search_select_box{
+   max-width: 100%;
+}
+.search_select_box select{
+    width: 100%;
+}
+.search_select_box button{
+    background-color: #0998CC !important;
+    padding: 10px 15px;
+    color: #fff !important;
+    font-size: 15px;
+}
 * {
 	margin: 0;
 	padding: 0;

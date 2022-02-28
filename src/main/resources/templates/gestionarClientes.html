@@ -139,7 +139,7 @@
                         </thead>
                         <tbody th:each="cliente:${clientes}">
                         <tr>
-                            <td th:text="${cliente.id_persona}"></td>
+                            <td th:text="${cliente.documento}"></td>
                             <td th:text="${cliente.nombres}"></td>
                             <td th:text="${cliente.apellidos}"></td>
                             <td>
@@ -150,7 +150,7 @@
                             </td>
                             <td>
                                 <button class="butonEdit"><a
-                                    th:href="@{/ConfirmacionEliminarCliente(nd=${cliente.documento})}" class="btn "><img
+                                        th:href="@{/ConfirmacionEliminarCliente(nd=${cliente.documento})}" class="btn "><img
                                     src="images/trash.png" class="imagesEdi"/></a></button>
                             </td>
                             <td>

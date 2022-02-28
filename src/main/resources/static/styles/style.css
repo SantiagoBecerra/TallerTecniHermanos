@@ -5,10 +5,8 @@ html, body{
   height:100%;
   margin :0;
 }
-
-
 .center-1{
-  margin-left:15%;
+  margin-left: 25%;
   margin-top:-40%;
   align-items: center;
   justify-content: center;
@@ -19,7 +17,6 @@ html, body{
   align-items: center;
   justify-content: center;
   text-align: center;
-  
 }
 
 .center-3{
@@ -31,7 +28,7 @@ html, body{
   
 }
 .text-center{
-	margin-left: 4%;
+	margin-left: 25%;
 	margin-right: 10%;
 }
 
@@ -43,9 +40,6 @@ html, body{
 .flexbox {
   
 
-}
-
-.center-2{
 }
 * {
 	margin: 0;

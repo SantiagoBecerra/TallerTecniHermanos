@@ -79,6 +79,8 @@ public class CrudController {
 	public String ConfirmacionEliminarEmpleado(Model model,@RequestParam("nd") String documento) throws ParseException{
 		Personas cliente = generalService.getEmpleadoById(documento);
 		model.addAttribute("numeroDocumento",cliente.getDocumento());
+		model.addAttribute("nombreEmpleado",cliente.getNombres());
+		model.addAttribute("apellidoEmpleado",cliente.getApellidos());
 		return  "eliminarEmpleado";
 	} 
 	
@@ -92,7 +94,7 @@ public class CrudController {
 	} 
 	
 	@RequestMapping("/RegistrarCliente")
-	public String registrarDocente(Model model){
+	public String registrarCliente(Model model){
 		return "registrarCliente";
 	} 
 	
@@ -137,6 +139,8 @@ public class CrudController {
 	public String ConfirmacionEliminarCliente(Model model,@RequestParam("nd") String documento) throws ParseException{
 		Personas cliente = generalService.getClienteById(documento);
 		model.addAttribute("numeroDocumento",cliente.getDocumento());
+		model.addAttribute("nombreCliente",cliente.getNombres());
+		model.addAttribute("apellidoCliente",cliente.getApellidos());
 		return  "eliminarCliente";
 	} 
 	
@@ -183,6 +187,7 @@ public class CrudController {
 	public String ConfirmacionEliminarServicio(Model model,@RequestParam("nd") String documento) throws ParseException{
 		Servicios cliente = generalService.getServicioById(documento);
 		model.addAttribute("numeroDocumento",cliente.getId_servicio());
+		model.addAttribute("nombreServicio",cliente.getNombre_servicio());
 		return  "eliminarServicio";
 	} 
 	
@@ -230,6 +235,7 @@ public class CrudController {
 	public String ConfirmacionEliminarRepuesto(Model model,@RequestParam("nd") String documento) throws ParseException{
 		Repuestos cliente = generalService.getRepuestoById(documento);
 		model.addAttribute("numeroDocumento",cliente.getId_repuesto());
+		model.addAttribute("nombreRepuesto",cliente.getNombre_repuesto());
 		return  "eliminarRepuesto";
 	} 
 	
