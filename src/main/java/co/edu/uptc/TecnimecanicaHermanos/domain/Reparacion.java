@@ -32,13 +32,15 @@ public class Reparacion {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id_reparacion")
     private List<RepuestosReparacion> repuestosReparacions;
 
-    public Reparacion(Integer id_reparacion, Integer costo_servicio, Integer costo_total_reparacion) {
+    public Reparacion(Integer id_reparacion, Servicios id_servicio, OrdenReparacion id_orden,Integer costo_servicio, String fechaReparacion, Integer costo_total_reparacion) {
         this.id_reparacion = id_reparacion;
         this.costo_servicio = costo_servicio;
         this.costo_total_reparacion = costo_total_reparacion;
+        this.id_servicio = id_servicio;
+        this.id_orden = id_orden;
+        this.fecha_reparacion = fechaReparacion;
     }
     public Reparacion(){
-
     }
 
     public Integer getId_reparacion() {

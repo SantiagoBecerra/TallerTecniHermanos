@@ -4,7 +4,6 @@ package co.edu.uptc.TecnimecanicaHermanos.controller;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 import co.edu.uptc.TecnimecanicaHermanos.domain.*;
@@ -367,22 +366,26 @@ public class CrudController {
     // ------------------------------ Reparaciones---------------------------------
     @RequestMapping("/GestionarReparaciones")
     public String gestionarReparaciones(Model model,@RequestParam("nd") int id_Orden) {
-        List<Reparacion> reparaciones = generalService.getOrdenReparacionByIdOrden(id_Orden);
+        List<Reparacion> reparaciones = generalService.getReparacionesById(id_Orden);
         model.addAttribute("reparaciones", reparaciones);
-        return "gestionarReparacion";
+        System.out.println(reparaciones.toString());
+        OrdenReparacion orden = generalService.getOrdenReparacionByIdOrden(id_Orden);
+        model.addAttribute("orden", orden);
+        return"gestionarReparaciones";
     }
 
     @RequestMapping("/VerReparaciones")
     public String verReparaciones(Model model, @RequestParam("nd") String id_Orden) {
         List<Reparacion> reparacions = generalService.getReparaciones();
         model.addAttribute("reparaciones", reparacions);
+        System.out.println(reparacions.toString());
         OrdenReparacion orden = generalService.getOrdenReparacionById(id_Orden);
         model.addAttribute("orden", orden);
         return "verReparaciones";
     }
 
     @RequestMapping("/RegistrarReparacion")
-    public String registrarReparacion(Model model) {
+    public String registrarReparacion(Model model,@RequestParam("nd") int id_Orden) {
         List<Servicios> servicios = generalService.getServicios();
         model.addAttribute("servicios", servicios);
         return "registrarReparacion";

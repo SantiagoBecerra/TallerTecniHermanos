@@ -36,6 +36,9 @@ public interface GeneralRepositoryOrdenReparacion extends JpaRepository<OrdenRep
     @Query(value= "SELECT * FROM orden_reparaciones WHERE id_orden = ?1 ",nativeQuery = true)
 	public OrdenReparacion getOrdenReparacionById(String id);
 
+    @Query(value= "SELECT * FROM orden_reparaciones WHERE id_orden = ?1 ",nativeQuery = true)
+    public OrdenReparacion getOrdenReparacionByIdOrden(int id);
+
     @Query(value= "SELECT * FROM orden_reparaciones WHERE placa = ?1 ",nativeQuery = true)
    	public List<OrdenReparacion> getOrdenReparacionByPlaca(String id);
 

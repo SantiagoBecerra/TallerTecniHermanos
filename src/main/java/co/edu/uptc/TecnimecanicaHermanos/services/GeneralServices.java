@@ -183,6 +183,9 @@ public class GeneralServices {
 	public OrdenReparacion getOrdenReparacionById(String id){
 		return generalRepositoryOrdenReparacion.getOrdenReparacionById(id);
 	}
+	public OrdenReparacion getOrdenReparacionByIdOrden(int id){
+		return generalRepositoryOrdenReparacion.getOrdenReparacionByIdOrden(id);
+	}
 	
 	public List<OrdenReparacion> getOrdenReparacionByPlaca(String id){
 		return generalRepositoryOrdenReparacion.getOrdenReparacionByPlaca(id);
@@ -198,6 +201,7 @@ public class GeneralServices {
 	//----------------------------------Reparaciones---------------------------------------------
 
 	public List<Reparacion> getReparaciones(){
+		System.out.println(generalRepositoryReparaciones.getReparaciones());
 		return generalRepositoryReparaciones.getReparaciones();
 	}
 
@@ -213,7 +217,7 @@ public class GeneralServices {
 	public Reparacion getReparacionById(int id_reparacion){
 		return generalRepositoryReparaciones.getReparacionById(id_reparacion);
 	}
-	public List<Reparacion> getOrdenReparacionByIdOrden(int id){
+	public List<Reparacion> getReparacionesById(int id){
 		return generalRepositoryReparaciones.getReparacionesByIdOrden(id);
 	}
 /*	public List<OrdenReparacion> getOrdenReparacionByPlaca(String id){

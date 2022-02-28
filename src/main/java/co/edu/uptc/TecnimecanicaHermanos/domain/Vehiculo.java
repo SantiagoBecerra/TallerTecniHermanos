@@ -38,7 +38,7 @@ public class Vehiculo {
     private Personas personas;
 
 
-	public Vehiculo(String placa, String modelo, String marca, String color, String anio, String descripcion,
+	public Vehiculo(String placa, String modelo,String color,  String marca,  String anio, String descripcion,
 			Personas persona) {
 		super();
 		this.placa = placa;

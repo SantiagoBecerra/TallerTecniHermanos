@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface GeneralRepositoryReparaciones  extends JpaRepository<OrdenReparacion, Integer> {
+public interface GeneralRepositoryReparaciones  extends JpaRepository<Reparacion, Integer> {
     @Query(value= "SELECT * FROM reparaciones ORDER BY id_reparacion",nativeQuery = true)
     public List<Reparacion> getReparaciones();
 

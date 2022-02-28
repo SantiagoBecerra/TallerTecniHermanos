@@ -101,8 +101,8 @@
     </div>
 </div>
 
-<div class="  center text-center">
-    <h3 class="mt-4">Gestionar Orden</h3>
+<div class="  center text-center"th:each="orden:${orden}">
+    <h3 class="mt-4"  th:text=" 'Gestionar Reparaciones de la orden No: ' + ${orden.id_orden}"></h3>
     <div class="container mt-4 mb-4">
         <div class="row">
             <div class="col-md-auto">
@@ -110,7 +110,7 @@
                 <div class="card" style="width: 10rem;">
                     <img src="images/gestionarOrdenes.png" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a th:href="@{/RegistrarOrden}" class="btn btn-primary">Registrar</a>
+                        <a th:href="@{/RegistrarReparacion(nd=${orden.id_orden})}" class="btn btn-primary">Registrar</a>
                     </div>
                 </div>
 
@@ -123,44 +123,46 @@
                             </ul>
                             <form class="d-flex">
                                 <input type="search" id="myInput" onkeyup='tableSearch()'
-                                       placeholder="Buscar por placa">
+                                       placeholder="Buscar por id reparacion">
                             </form>
                         </div>
                     </div>
                 </nav>
                 <div class="datagrid mt-4">
-                    <table class="content-table">
+                    <table class="content-table myTable">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Fecha</th>
-                            <th>Placa</th>
-                            <th>Responsable</th>
-                            <th>Costo</th>
+                            <th>Id_Reparacion</th>
+                            <th>Costo de servicio</th>
+                            <th>Fecha_Reparacion</th>
+                            <th>Costo Total</th>
+                            <th>Id_Servicio</th>
+                            <th>Id_Orden</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
-                            <th>Reparaciones</th>
+                            <th>Repuestos</th>
                         </tr>
                         </thead>
-                        <tbody th:each="estudiante:${estudiantes}">
+                        <tbody th:each="reparacion:${reparaciones}">
                         <tr>
-                            <td th:text="${estudiante.id_orden}"></td>
-                            <td th:text="${estudiante.fecha_orden}"></td>
-                            <td th:text="${estudiante.placa.placa}"></td>
-                            <td th:text="${estudiante.id_empleado.nombres}"></td>
-                            <td th:text="${estudiante.costo_total}"></td>
+                            <td th:text="${reparacion.id_reparacion}"></td>
+                            <td th:text="${reparacion.costo_servicio}"></td>
+                            <td th:text="${reparacion.fecha_reparacion}"></td>
+                            <td th:text="${reparacion.costo_total_reparacion}"></td>
+                            <td th:text="${reparacion.id_orden.id_orden}"></td>
+                            <td th:text="${reparacion.id_servicio.id_servicio}"></td>
                             <td>
-                                <button class="butonEdit"><a th:href="@{/ModificarOrden(nd=${estudiante.id_orden})}"
+                                <button class="butonEdit"><a th:href="@{/ModificarReparacion(nd=${reparacion.id_reparacion})}"
                                                              class="btn "><img src="images/pencil.png"
                                                                                class="imagesEdi"/></a></button>
                             </td>
                             <td>
                                 <button class="butonEdit"><a
-                                    th:href="@{/ConfirmacionEliminarOrden(nd=${estudiante.id_orden})}" class="btn "><img
+                                    th:href="@{/ConfirmacionEliminarReparacion(nd=${reparacion.id_orden.id_orden})}" class="btn "><img
                                     src="images/trash.png" class="imagesEdi"/></a></button>
                             </td>
                             <td>
-                                <button class="butonEdit"><a th:href="@{/GestionarReparaciones(nd=${estudiante.id_orden})}"
+                                <button class="butonEdit"><a th:href="@{/VerRepuestosAsignados(nd=${reparacion.id_orden.id_orden})}"
                                                              class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a>
                                 </button>
                             </td>
@@ -182,7 +184,7 @@
         table = document.getElementById("myTable");
         tr = document.getElementsByTagName("tr");
         for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2];
+            td = tr[i].getElementsByTagName("td")[0];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
