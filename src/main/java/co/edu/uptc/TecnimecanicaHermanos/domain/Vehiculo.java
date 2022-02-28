@@ -47,9 +47,8 @@ public class Vehiculo {
 		this.color = color;
 		this.anio = anio;
 		this.descripcion = descripcion;
-		this.personas = personas;
+		this.personas = persona;
 	}
-
 
 
 	public Vehiculo() {

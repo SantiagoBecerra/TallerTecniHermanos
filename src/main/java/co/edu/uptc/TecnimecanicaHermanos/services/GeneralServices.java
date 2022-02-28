@@ -7,19 +7,11 @@ package co.edu.uptc.TecnimecanicaHermanos.services;
 
 import java.util.Date;
 import java.util.List;
+
+import co.edu.uptc.TecnimecanicaHermanos.domain.*;
+import co.edu.uptc.TecnimecanicaHermanos.repository.*;
 import org.springframework.stereotype.Service;
 
-import co.edu.uptc.TecnimecanicaHermanos.domain.OrdenReparacion;
-import co.edu.uptc.TecnimecanicaHermanos.domain.Personas;
-import co.edu.uptc.TecnimecanicaHermanos.domain.Repuestos;
-import co.edu.uptc.TecnimecanicaHermanos.domain.Servicios;
-import co.edu.uptc.TecnimecanicaHermanos.domain.Vehiculo;
-import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryOrdenReparacion;
-import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryPersonas;
-import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryRepuestoReparaciones;
-import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryRepuestos;
-import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryServicios;
-import co.edu.uptc.TecnimecanicaHermanos.repository.GeneralRepositoryVehiculos;
 //
 @Service
 public class GeneralServices {
@@ -29,15 +21,18 @@ public class GeneralServices {
 	public final GeneralRepositoryVehiculos generalRepositoryVehiculos;
 	public final GeneralRepositoryOrdenReparacion generalRepositoryOrdenReparacion;
 	public final GeneralRepositoryRepuestoReparaciones generalRepositoryRepuestoReparacion;
+	public final GeneralRepositoryReparaciones generalRepositoryReparaciones;
 
 	public GeneralServices(GeneralRepositoryPersonas generalRepository,GeneralRepositoryServicios generalRepositoryServicios,GeneralRepositoryRepuestos generalRepositoryRepuestos
-			,GeneralRepositoryVehiculos generalRepositoryVehiculos,GeneralRepositoryOrdenReparacion generalRepositoryOrdenReparacion,GeneralRepositoryRepuestoReparaciones generalRepositoryRepuestoReparacion) {
+			,GeneralRepositoryVehiculos generalRepositoryVehiculos,GeneralRepositoryOrdenReparacion generalRepositoryOrdenReparacion,GeneralRepositoryRepuestoReparaciones generalRepositoryRepuestoReparacion,
+						   GeneralRepositoryReparaciones generalRepositoryReparaciones) {
 		this.generalRepositoryPersonas = generalRepository;
 		this.generalRepositoryServicios = generalRepositoryServicios;
 		this.generalRepositoryRepuestos=generalRepositoryRepuestos;
 		this.generalRepositoryVehiculos=generalRepositoryVehiculos;
 		this.generalRepositoryOrdenReparacion=generalRepositoryOrdenReparacion;
 		this.generalRepositoryRepuestoReparacion=generalRepositoryRepuestoReparacion;
+		this.generalRepositoryReparaciones = generalRepositoryReparaciones;
 	}
 
 	public Personas getUsuarioLogin(String usuario,String contrasenia){
@@ -176,8 +171,8 @@ public class GeneralServices {
 		return generalRepositoryOrdenReparacion.getOrdenesReparaciones();
 	}
 
-	public void registrarOrdenReparacion(String descripcion,Date fecha,int costoTotal,int empleado,String placa){
-		generalRepositoryOrdenReparacion.registrarOrdenReparacion(descripcion, fecha, costoTotal, empleado, placa);
+	public void registrarOrdenReparacion(String descripcion,String fecha,int empleado,String placa){
+		generalRepositoryOrdenReparacion.registrarOrdenReparacion(descripcion, fecha, empleado, placa);
 	}
 
 	public void eliminarOrdenReparacion(String documento) {
@@ -192,11 +187,47 @@ public class GeneralServices {
 	public List<OrdenReparacion> getOrdenReparacionByPlaca(String id){
 		return generalRepositoryOrdenReparacion.getOrdenReparacionByPlaca(id);
 	}
+	public List<OrdenReparacion> getOrdenReparacionByIdEmpleado(int id){
+		return generalRepositoryOrdenReparacion.getOrdenReparacionByIdEmpleado(id);
+	}
 
-	public void actualizarOrdenReparacion(int idOrden ,String diagnostico,int costoTotal) {
-		generalRepositoryOrdenReparacion.actualizarOrdenReparacion(idOrden, diagnostico, costoTotal);
-	}  
-	
+	public void actualizarOrdenReparacion(int idOrden ,String diagnostico) {
+		generalRepositoryOrdenReparacion.actualizarOrdenReparacion(idOrden, diagnostico);
+	}
+
+	//----------------------------------Reparaciones---------------------------------------------
+
+	public List<Reparacion> getReparaciones(){
+		return generalRepositoryReparaciones.getReparaciones();
+	}
+
+	public void registrarReparacion(Integer costo,String fecha,int id_servicio,int id_Orden){
+		generalRepositoryReparaciones.registrarReparacion(costo, fecha, id_servicio, id_Orden);
+	}
+
+	public void eliminarReparacion(int id_reparacion) {
+		generalRepositoryReparaciones.eliminarReparacion(id_reparacion);
+
+	}
+
+	public Reparacion getReparacionById(int id_reparacion){
+		return generalRepositoryReparaciones.getReparacionById(id_reparacion);
+	}
+	public List<Reparacion> getOrdenReparacionByIdOrden(int id){
+		return generalRepositoryReparaciones.getReparacionesByIdOrden(id);
+	}
+/*	public List<OrdenReparacion> getOrdenReparacionByPlaca(String id){
+		return generalRepositoryOrdenReparacion.getOrdenReparacionByPlaca(id);
+	}
+	public List<OrdenReparacion> getOrdenReparacionByIdEmpleado(int id){
+		return generalRepositoryOrdenReparacion.getOrdenReparacionByIdEmpleado(id);
+	}*/
+
+
+	public void actualizarReparacion(int idOrden ,String fecha_reparacion,int costo_servicio) {
+		generalRepositoryReparaciones.actualizarReparacion(idOrden, fecha_reparacion,costo_servicio);
+	}
+
 	//----------------------------------Repuestos Reparacion---------------------------------------------
 	
 	public void registrarRepuestoReparacion(int cantidad,int idRepuesto,int idReparacion){

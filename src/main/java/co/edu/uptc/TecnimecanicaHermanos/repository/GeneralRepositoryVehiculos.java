@@ -17,7 +17,7 @@ import co.edu.uptc.TecnimecanicaHermanos.domain.Vehiculo;
 
 public interface GeneralRepositoryVehiculos extends JpaRepository<Vehiculo, Integer>{
 	
-  //  -------------------------------Clientes---------------------------------------
+  //  -------------------------------Vehiculos---------------------------------------
     
     @Query(value= "SELECT * FROM vehiculos ORDER BY placa",nativeQuery = true)
     public List<Vehiculo> getVehiculos();

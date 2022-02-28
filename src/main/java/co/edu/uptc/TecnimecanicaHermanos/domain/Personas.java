@@ -13,14 +13,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "personas" , schema = "taller_tecni_hermanos")
 public class Personas {
-	
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name="id_persona")
 	Integer id_persona;
 
-	
 	@Column(name="nombres")
 	String nombres;
 	

@@ -133,12 +133,12 @@
                         <div class="mb-4 mt-4">
                             <input class="form-control" id="ct" name="ct"
                                    th:value="${ordene.costo_total}"
-                                   th:placeholder="${ordene.costo_total}">
+                                   th:placeholder="${ordene.costo_total}" readonly>
                         </div>
                         <div class="mb-4 mt-4">
                             <input class="form-control" id="idr" name="idr"
                                    th:value="${ordene.id_empleado.apellidos}"
-                                   th:placeholder="${ordene.id_empleado.apellidos}" readonly>
+                                   th:placeholder="${ordene.id_empleado.apellidos}" >
                         </div>
 
                         <button type="submit" class="btn btn-primary">Actualizar</button>

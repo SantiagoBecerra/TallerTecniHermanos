@@ -25,24 +25,27 @@ public interface GeneralRepositoryOrdenReparacion extends JpaRepository<OrdenRep
     
     @Modifying
     @org.springframework.transaction.annotation.Transactional
-    @Query(value= " INSERT INTO orden_reparaciones (diagnostico,fecha_orden,costo_total,id_empleado,placa) VALUES(?,?,?,?,?)",nativeQuery = true)
-    public void registrarOrdenReparacion(String diagnostico,Date Fecha_orden,int costoTotal,int empleado,String placa);
+    @Query(value= " INSERT INTO orden_reparaciones (diagnostico,Fecha_orden,id_empleado,placa) VALUES(?,?,?,?)",nativeQuery = true)
+    public void registrarOrdenReparacion(String diagnostico,String Fecha_orden,int empleado,String placa);
     
     @Modifying
     @org.springframework.transaction.annotation.Transactional
     @Query(value = "DELETE FROM orden_reparaciones WHERE id_orden = ?",nativeQuery = true)
 	public void eliminarOrdenReparacion(String idOrden);
-    
+
     @Query(value= "SELECT * FROM orden_reparaciones WHERE id_orden = ?1 ",nativeQuery = true)
 	public OrdenReparacion getOrdenReparacionById(String id);
-    
+
     @Query(value= "SELECT * FROM orden_reparaciones WHERE placa = ?1 ",nativeQuery = true)
    	public List<OrdenReparacion> getOrdenReparacionByPlaca(String id);
+
+    @Query(value= "SELECT * FROM orden_reparaciones WHERE id_empleado = ?1 ",nativeQuery = true)
+    public List<OrdenReparacion> getOrdenReparacionByIdEmpleado(int id);
     
     @Modifying
     @org.springframework.transaction.annotation.Transactional
-	@Query(value = "UPDATE orden_reparaciones SET diagnostico= ?2,costo_total= ?3 WHERE id_orden = ?1",nativeQuery = true)
-	public void actualizarOrdenReparacion(int idOrden, String diagnostico,int costoTotal);
+	@Query(value = "UPDATE orden_reparaciones SET diagnostico= ?2 WHERE id_orden = ?1",nativeQuery = true)
+	public void actualizarOrdenReparacion(int idOrden, String diagnostico);
     
 }
 

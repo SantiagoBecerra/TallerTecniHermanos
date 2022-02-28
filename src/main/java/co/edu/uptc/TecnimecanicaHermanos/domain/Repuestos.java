@@ -1,10 +1,7 @@
 package co.edu.uptc.TecnimecanicaHermanos.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "repuestos" , schema = "taller_tecni_hermanos")
@@ -24,6 +21,9 @@ public class Repuestos {
 	
 	@Column(name="cantidad_inventario")
 	Integer cantidad_inventario;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id_repuesto")
+	private List<RepuestosReparacion> repuestosReparaciones;
 
 	public Repuestos(Integer id_repuesto, String nombre_repuesto, Integer costo_unitario, Integer cantidad_inventario) {
 		super();
@@ -65,7 +65,12 @@ public class Repuestos {
 	public void setCantidad_inventario(Integer cantidad_inventario) {
 		this.cantidad_inventario = cantidad_inventario;
 	}
-	
-	
 
+	public List<RepuestosReparacion> getRepuestosReparaciones() {
+		return repuestosReparaciones;
+	}
+
+	public void setRepuestosReparaciones(List<RepuestosReparacion> repuestosReparaciones) {
+		this.repuestosReparaciones = repuestosReparaciones;
+	}
 }

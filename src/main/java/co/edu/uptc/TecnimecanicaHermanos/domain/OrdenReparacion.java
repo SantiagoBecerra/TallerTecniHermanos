@@ -25,7 +25,7 @@ public class OrdenReparacion {
     String diagnostico;
 
     @Column(name = "fecha_orden")
-    Date fecha_orden;
+    String fecha_orden;
 
     @Column(name = "costo_total")
     Integer costo_total;
@@ -41,7 +41,7 @@ public class OrdenReparacion {
     public OrdenReparacion() {
     }
 
-    public OrdenReparacion(Integer id_orden, String diagnostico, Date fecha_orden, Integer costo_total,
+    public OrdenReparacion(Integer id_orden, String diagnostico, String fecha_orden, Integer costo_total,
                            Personas id_empleado, Vehiculo placa) {
         super();
         this.id_orden = id_orden;
@@ -68,11 +68,11 @@ public class OrdenReparacion {
         this.diagnostico = diagnostico;
     }
 
-    public Date getFecha_orden() {
+    public String getFecha_orden() {
         return fecha_orden;
     }
 
-    public void setFecha_orden(Date fecha_orden) {
+    public void setFecha_orden(String fecha_orden) {
         this.fecha_orden = fecha_orden;
     }
 
