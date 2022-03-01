@@ -316,6 +316,8 @@ public class CrudController {
         model.addAttribute("responsables", clientes);
         List<Vehiculo> vehiculos = generalService.getVehiculos();
         model.addAttribute("vehiculos", vehiculos);
+        List<Repuestos> repuestos = generalService.getRepuestos();
+        model.addAttribute("repuestos", repuestos);
         return "registrarOrden";
     }
 
@@ -368,7 +370,6 @@ public class CrudController {
     public String gestionarReparaciones(Model model,@RequestParam("nd") int id_Orden) {
         List<Reparacion> reparaciones = generalService.getReparacionesById(id_Orden);
         model.addAttribute("reparaciones", reparaciones);
-        System.out.println(reparaciones.toString());
         OrdenReparacion orden = generalService.getOrdenReparacionByIdOrden(id_Orden);
         model.addAttribute("orden", orden);
         return"gestionarReparaciones";
@@ -378,7 +379,6 @@ public class CrudController {
     public String verReparaciones(Model model, @RequestParam("nd") String id_Orden) {
         List<Reparacion> reparacions = generalService.getReparaciones();
         model.addAttribute("reparaciones", reparacions);
-        System.out.println(reparacions.toString());
         OrdenReparacion orden = generalService.getOrdenReparacionById(id_Orden);
         model.addAttribute("orden", orden);
         return "verReparaciones";

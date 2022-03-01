@@ -21,7 +21,7 @@ public class RepuestosReparacion {
 	@JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion")
 	private Reparacion id_reparacion;
 
-	public RepuestosReparacion(Integer cantidad) {
+	public RepuestosReparacion(Integer cantidad,Repuestos id_repuesto,Reparacion id_reparacion) {
 		this.cantidad = cantidad;
 		this.id_repuesto = id_repuesto;
 		this.id_reparacion = id_reparacion;

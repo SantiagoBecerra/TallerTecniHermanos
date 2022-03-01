@@ -106,7 +106,6 @@
         <div class="row">
             <div class="col">
                 <div class="row">
-
                     <div class="col mt-4">
                         <form th:action="@{/GuardarOrden(pl,dn,idr)}">
                             <div class="search_select_box">
@@ -128,6 +127,20 @@
                                             th:text="${cliente.nombres}"
                                             th:value="${cliente.apellidos}"></option>
                                 </select>
+                            </div>
+                            
+                            <div class="search_select_box mb-4 mt-4">
+                                <select name="idr" id="idr" class="w-100" data-live-search="true">
+                                    <option selected>Repuestos a utilizar:</option>
+                                    <option name="idp" id="idp" th:each="cliente:${repuestos}"
+                                            th:text="${cliente.nombre_repuesto}"
+                                            th:value="${cliente.nombre_repuesto}"></option>
+                                </select>
+                            </div>
+                            
+                           <div class="mb-4 mt-4">
+                                <input name="dn" id="dn" type="number" class="form-control" placeholder="Cantidad *"
+                                       required>
                             </div>
                             <!--<div class="mb-4 mt-4">
                                 <input name="ct" id="ct" type="number" class="form-control" placeholder="Cantidad *"
