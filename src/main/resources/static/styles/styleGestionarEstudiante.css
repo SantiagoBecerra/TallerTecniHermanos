@@ -68,7 +68,7 @@ html {
 .datagrid {
 	height:100%;
     width:100%;
-	overflow-y: scroll;
+	overflow: auto;
 }
 
 .center{
@@ -118,6 +118,21 @@ html {
     padding: 10px 15px;
     color: #fff !important;
     font-size: 15px;
+}
+input[type="date"]::before {
+    color: #999999;
+    content: attr(placeholder);
+}
+input[type="date"] {
+    color: #ffffff;
+}
+input[type="date"]:focus,
+input[type="date"]:valid {
+    color: #666666;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+    content: "" !important;
 }
 * {
 	margin: 0;

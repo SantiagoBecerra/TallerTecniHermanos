@@ -206,7 +206,7 @@ public class GeneralServices {
 	}
 
 	public void registrarReparacion(Integer costo,String fecha,int id_servicio,int id_Orden){
-		generalRepositoryReparaciones.registrarReparacion(costo, fecha, id_servicio, id_Orden);
+		generalRepositoryReparaciones.registrarReparacion(costo, fecha, id_servicio, id_Orden,costo);
 	}
 
 	public void eliminarReparacion(int id_reparacion) {
@@ -220,16 +220,9 @@ public class GeneralServices {
 	public List<Reparacion> getReparacionesById(int id){
 		return generalRepositoryReparaciones.getReparacionesByIdOrden(id);
 	}
-/*	public List<OrdenReparacion> getOrdenReparacionByPlaca(String id){
-		return generalRepositoryOrdenReparacion.getOrdenReparacionByPlaca(id);
-	}
-	public List<OrdenReparacion> getOrdenReparacionByIdEmpleado(int id){
-		return generalRepositoryOrdenReparacion.getOrdenReparacionByIdEmpleado(id);
-	}*/
-
-
-	public void actualizarReparacion(int idOrden ,String fecha_reparacion,int costo_servicio) {
-		generalRepositoryReparaciones.actualizarReparacion(idOrden, fecha_reparacion,costo_servicio);
+	public void actualizarReparacion(int idReparacion ,String fecha_reparacion,int costo_servicio) {
+		generalRepositoryReparaciones.actualizarReparacion(idReparacion, fecha_reparacion,costo_servicio);
+		generalRepositoryReparaciones.actualizarReparacionCostoTotal(idReparacion);
 	}
 
 	//----------------------------------Repuestos Reparacion---------------------------------------------

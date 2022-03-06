@@ -102,7 +102,7 @@
 </div>
 
 <div class="  center text-center"th:each="orden:${orden}">
-    <h3 class="mt-4"  th:text=" 'Gestionar Reparaciones de la orden No: ' + ${orden.id_orden}"></h3>
+    <h3 class="mt-4"  th:text=" 'Gestion de reparaciones de la orden No: ' + ${orden.id_orden}"></h3>
     <div class="container mt-4 mb-4">
         <div class="row">
             <div class="col-md-auto">
@@ -136,8 +136,7 @@
                             <th>Costo de servicio</th>
                             <th>Fecha_Reparacion</th>
                             <th>Costo Total</th>
-                            <th>Id_Servicio</th>
-                            <th>Id_Orden</th>
+                            <th>Servicio</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                             <th>Repuestos</th>
@@ -149,16 +148,15 @@
                             <td th:text="${reparacion.costo_servicio}"></td>
                             <td th:text="${reparacion.fecha_reparacion}"></td>
                             <td th:text="${reparacion.costo_total_reparacion}"></td>
-                            <td th:text="${reparacion.id_orden.id_orden}"></td>
-                            <td th:text="${reparacion.id_servicio.id_servicio}"></td>
+                            <td th:text="${reparacion.id_servicio.nombre_servicio}"></td>
                             <td>
-                                <button class="butonEdit"><a th:href="@{/ModificarReparacion(nd=${reparacion.id_reparacion})}"
+                                <button class="butonEdit"><a th:href="@{/ModificarReparacion(nd=${reparacion.id_reparacion},no=${reparacion.id_orden.id_orden})}"
                                                              class="btn "><img src="images/pencil.png"
                                                                                class="imagesEdi"/></a></button>
                             </td>
                             <td>
                                 <button class="butonEdit"><a
-                                    th:href="@{/ConfirmacionEliminarReparacion(nd=${reparacion.id_orden.id_orden})}" class="btn "><img
+                                    th:href="@{/ConfirmacionEliminarReparacion(nd=${reparacion.id_reparacion},ido =${reparacion.id_orden.id_orden})}" class="btn "><img
                                     src="images/trash.png" class="imagesEdi"/></a></button>
                             </td>
                             <td>

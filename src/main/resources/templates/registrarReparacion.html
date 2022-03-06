@@ -100,63 +100,40 @@
         </ul>
     </div>
 </div>
-<div class="  center card text-center">
-    <h3 class="mt-1">Registrar Orden de Reparacion</h3>
+<div class="  center card text-center" th:each="orden:${orden}">
+    <h3 class="mt-1"  th:text="'Registrar reparaciones de la orden No: ' + ${orden.id_orden}"></h3>
     <div class="container mt-2 mb-2">
         <div class="row">
             <div class="col">
                 <div class="row">
                     <div class="col mt-4">
-                        <form th:action="@{/GuardarOrden(pl,dn,idr)}">
+                        <form th:action="@{/GuardarReparacion(ct,nd,ids,fh)}">
+                            <div class="mb-4 mt-4">
+                                <input name="ct" id="ct" type="number" class="form-control"
+                                       placeholder="Costo Mano de Obra *"
+                                       required>
+                            </div>
                             <div class="search_select_box">
-                                <select name="pl" id="pl" class="w-100" data-live-search="true">
-                                    <option selected>Seleccione Vehiculo</option>
-                                    <option name="pl" id="pl" th:each="cliente:${vehiculos}"
-                                            th:text="' Placa: ' + ${cliente.placa} + ' Dueño: ' + ${cliente.personas.nombres} + ' Modelo: ' + ${cliente.modelo}"
-                                            th:value="${cliente.placa}">
+                                <select name="ids" id="ids" class="w-100" data-live-search="true">
+                                    <option selected>Seleccione Servicio</option>
+                                    <option name="idse" id="idse" th:each="servicio:${servicios}"
+                                            th:text="' Servicio: ' + ${servicio.nombre_servicio} "
+                                            th:value="${servicio.id_servicio}">
                                     </option>
                                 </select>
                             </div>
                             <div class="mb-4 mt-4">
-                                <input name="dn" id="dn" type="text " class="form-control" placeholder="Diagnostico *"
-                                       required>
+                                <input name="fh" id="fh" type="date" class="form-control"
+                                       placeholder="Fecha_Reparacion" required>
                             </div>
-                            <div class="search_select_box">
-                                <select name="idr" id="idr" class="w-100" data-live-search="true">
-                                    <option selected>Empleado Encargado</option>
-                                    <option name="idp" id="idp" th:each="cliente:${responsables}"
-                                            th:text="${cliente.nombres}"
-                                            th:value="${cliente.apellidos}"></option>
-                                </select>
+                            <div class="mb-4 mt-4">
+                                <input class="form-control" id="nd" name="nd"
+                                       th:value="${orden.id_orden}" th:placeholder="'Orden: ' +${orden.id_orden} "
+                                       readonly>
                             </div>
-<!--
-                            <div class="search_select_box mb-4 mt-4">
-                                <select name="idr" id="idr" class="w-100" data-live-search="true">
-                                    <option selected>Repuestos a utilizar:</option>
-                                    <option name="idp" id="idp" th:each="cliente:${repuestos}"
-                                            th:text="${cliente.nombre_repuesto}"
-                                            th:value="${cliente.nombre_repuesto}"></option>
-                                </select>
-                            </div>-->
-
-                         <!--   <div class="mb-4 mt-4">
-                                <input name="dn" id="dn" type="number" class="form-control" placeholder="Cantidad *"
-                                       required>
-                            </div>-->
-                            <!--<div class="mb-4 mt-4">
-                                <input name="ct" id="ct" type="number" class="form-control" placeholder="Cantidad *"
-                                       required>
-                                <input type="text" id="myRepuesto" placeholder="Repuesto *" required>
-                                <button type="button" class="btn btn-primary" id="agregar" onclick="addRepuesto()">
-                                    Agregar
-                                </button>
-                            </div>
-                            <div class="mb-4 mt-4" id="div1">
-                                <h1 id="agrega"></h1>
-                            </div>-->
                             <div class="mb-4 mt-4">
                                 <button type="submit" class="btn btn-primary"> Registrar</button>
-                                <a th:href="@{/GestionarOrdenes}" class="btn btn-primary">Cancelar</a>
+                                <a th:href="@{/GestionarReparaciones(nd=${orden.id_orden})}" class="btn btn-primary">Cancelar</a>
                             </div>
                         </form>
                     </div>

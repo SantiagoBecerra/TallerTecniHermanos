@@ -375,29 +375,22 @@ public class CrudController {
         return"gestionarReparaciones";
     }
 
-    @RequestMapping("/VerReparaciones")
-    public String verReparaciones(Model model, @RequestParam("nd") String id_Orden) {
-        List<Reparacion> reparacions = generalService.getReparaciones();
-        model.addAttribute("reparaciones", reparacions);
-        OrdenReparacion orden = generalService.getOrdenReparacionById(id_Orden);
-        model.addAttribute("orden", orden);
-        return "verReparaciones";
-    }
-
     @RequestMapping("/RegistrarReparacion")
     public String registrarReparacion(Model model,@RequestParam("nd") int id_Orden) {
         List<Servicios> servicios = generalService.getServicios();
         model.addAttribute("servicios", servicios);
+        OrdenReparacion orden = generalService.getOrdenReparacionByIdOrden(id_Orden);
+        model.addAttribute("orden", orden);
         return "registrarReparacion";
     }
 
     @RequestMapping("/GuardarReparacion")
-    public String guardarReparacion(Model model, @RequestParam("ct") int costo, @RequestParam("ido") int id_orden,
-                               @RequestParam("ids") int id_servicio) throws ParseException {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        generalService.registrarReparacion(costo, dtf.format(now),id_servicio, id_orden);
-        return "verReparaciones";
+    public String guardarReparacion(Model model, @RequestParam("ct") int costo, @RequestParam("nd") int id_orden,
+                               @RequestParam("ids") int id_servicio ,@RequestParam("fh") String fecha ) throws ParseException {
+       /* DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();*/
+        generalService.registrarReparacion(costo,fecha,id_servicio, id_orden);
+        return gestionarReparaciones(model,id_orden);
     }
 
     @RequestMapping("/ModificarReparacion")
@@ -409,21 +402,32 @@ public class CrudController {
 
     @RequestMapping("/ActualizarReparacion")
     public String actualizarReparacion(Model model, @RequestParam("idr") int idReparacion,
-                                  @RequestParam("fc") String fecha, @RequestParam("cr") int costo) throws ParseException {
+                                  @RequestParam("fh") String fecha, @RequestParam("cr") int costo,@RequestParam("ido") int id_Orden) throws ParseException {
         generalService.actualizarReparacion(idReparacion, fecha, costo);
-        return "verReparaciones";
+        return gestionarReparaciones(model,id_Orden);
     }
 
     @RequestMapping("/EliminarReparacion")
-    public String eliminarReparacion(Model model, @RequestParam("nd") int id_reparacion) throws ParseException {
+    public String eliminarReparacion(Model model, @RequestParam("nd") int id_reparacion,@RequestParam("ido") int id_Orden) throws ParseException {
         generalService.eliminarReparacion(id_reparacion);
+        model.addAttribute("id_orden", id_Orden);
         return "eliminacionReparacionExitosa";
     }
 
     @RequestMapping("/ConfirmacionEliminarReparacion")
-    public String ConfirmacionEliminarReparacion(Model model, @RequestParam("nd") int id_reparacion) throws ParseException {
+    public String ConfirmacionEliminarReparacion(Model model, @RequestParam("nd") int id_reparacion,@RequestParam("ido") int id_Orden) throws ParseException {
         model.addAttribute("id_reparacion", id_reparacion);
+        model.addAttribute("id_orden", id_Orden);
         return "eliminarReparacion";
 
+    }
+    // ------------------------------ Repuestos-Reparacion---------------------------------
+    @RequestMapping("/VerRepuestoReparacion")
+    public String verRepuestoReparacion(Model model, @RequestParam("nd") String id_Orden) {
+        List<Reparacion> reparacions = generalService.getReparaciones();
+        model.addAttribute("reparaciones", reparacions);
+        OrdenReparacion orden = generalService.getOrdenReparacionById(id_Orden);
+        model.addAttribute("orden", orden);
+        return "";
     }
 }
