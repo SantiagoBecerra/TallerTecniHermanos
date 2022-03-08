@@ -228,6 +228,8 @@ public class GeneralServices {
 	
 	public void registrarRepuestoReparacion(int cantidad,int idRepuesto,int idReparacion){
 		generalRepositoryRepuestoReparacion.registrarRepuestoReparacion(cantidad, idRepuesto, idReparacion);
+		generalRepositoryRepuestos.actualizarCantidadRepuesto(idRepuesto,cantidad);
+		generalRepositoryReparaciones.actualizarReparacionCostoTotal(idReparacion);
 	}
 	
 	public List<String> getRepuestoReparacionById(int idReparacion){

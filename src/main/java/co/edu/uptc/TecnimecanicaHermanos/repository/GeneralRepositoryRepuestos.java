@@ -19,7 +19,7 @@ public interface GeneralRepositoryRepuestos extends JpaRepository<Repuestos, Int
     
     @Query(value= "SELECT * FROM repuestos ORDER BY id_repuesto",nativeQuery = true)
     public List<Repuestos> getRepuestos();
-    
+
     @Modifying
     @org.springframework.transaction.annotation.Transactional
     @Query(value= " INSERT INTO repuestos(nombre_repuesto,costo_unitario,cantidad_inventario) VALUES(?,?,?)",nativeQuery = true)
@@ -37,7 +37,13 @@ public interface GeneralRepositoryRepuestos extends JpaRepository<Repuestos, Int
     @org.springframework.transaction.annotation.Transactional
 	@Query(value = "UPDATE repuestos SET nombre_repuesto= ?2, costo_unitario= ?3,cantidad_inventario= ?4 WHERE id_repuesto= ?1",nativeQuery = true)
 	public void actualizarRepuesto(String idServicio,String nombre,int costo,int cantidadInventario);
-    
+
+    @Modifying
+    @org.springframework.transaction.annotation.Transactional
+    @Query(value = "UPDATE repuestos SET cantidad_inventario = (SELECT cantidad_inventario FROM repuestos WHERE id_repuesto= ?1)- ?2 \n" +
+            "WHERE id_repuesto=?1",nativeQuery = true)
+    public void actualizarCantidadRepuesto(int id_repuesto, int cantidadUtilizada);
+
 }
 
 

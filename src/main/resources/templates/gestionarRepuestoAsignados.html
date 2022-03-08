@@ -62,7 +62,7 @@
             </a>
         </li>
         <li>
-            <a th:href="@{/GestionarRepuestos}" class="nav-link active">
+            <a th:href="@{/GestionarRepuestos}" class="nav-link">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#people-circle"/>
                 </svg>
@@ -70,7 +70,7 @@
             </a>
         </li>
         <li>
-            <a th:href="@{/GestionarOrdenes}" class="nav-link text-white">
+            <a th:href="@{/GestionarOrdenes}" class="nav-link text-white active">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#people-circle"/>
                 </svg>
@@ -110,7 +110,7 @@
                 <div class="card" style="width: 10rem;">
                     <img src="images/gestionarRpuestos.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a th:href="@{/RegistrarRepuestoReparacion(nd=${reparacion})}"
+                        <a th:href="@{/RegistrarRepuestoReparacion(nd=${reparacion},ido=${orden})}"
                            class="btn btn-primary">Añadir</a>
                     </div>
                 </div>

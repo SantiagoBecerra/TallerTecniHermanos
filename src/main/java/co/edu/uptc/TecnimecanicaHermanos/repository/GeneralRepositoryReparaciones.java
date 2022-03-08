@@ -36,8 +36,10 @@ public interface GeneralRepositoryReparaciones  extends JpaRepository<Reparacion
 
     @Modifying
     @org.springframework.transaction.annotation.Transactional
-    @Query(value = "UPDATE reparaciones SET costo_total_reparacion=(SELECT IFNULL((SELECT re.costo_unitario* rp.cantidad_repuesto+ r.costo_servicio FROM reparaciones r, reparaciones_repuesto rp, repuestos re\n" +
+    @Query(value = "UPDATE reparaciones SET costo_total_reparacion=(SELECT IFNULL((SELECT SUM(re.costo_unitario* rp.cantidad_repuesto) + r.costo_servicio\n" +
+            "FROM reparaciones r, reparaciones_repuestos rp, repuestos re\n" +
             "WHERE r.id_reparacion = rp.id_reparacion\n" +
-            "AND rp.id_repuesto = re.id_repuesto AND r.id_reparacion=?1),(SELECT costo_servicio FROM reparaciones WHERE id_reparacion=?1))) WHERE id_reparacion=?1",nativeQuery = true)
+            "AND rp.id_repuesto = re.id_repuesto \n" +
+            "AND r.id_reparacion=?1),(SELECT costo_servicio FROM reparaciones WHERE id_reparacion=?1))) WHERE id_reparacion=?1",nativeQuery = true)
     public void actualizarReparacionCostoTotal(int id_reparacion);
 }
