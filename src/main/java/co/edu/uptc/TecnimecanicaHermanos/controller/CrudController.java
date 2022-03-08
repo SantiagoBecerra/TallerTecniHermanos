@@ -147,8 +147,8 @@ public class CrudController {
     //	----------------------------------servicios----------------------------------------------
     @RequestMapping("/GestionarServicios")
     public String gestionarServicios(Model model) {
-        List<Servicios> docentes = generalService.getServicios();
-        model.addAttribute("estudiantes", docentes);
+        List<Servicios> servicios = generalService.getServicios();
+        model.addAttribute("servicios", servicios);
         return "gestionarServicios";
     }
 
@@ -208,6 +208,7 @@ public class CrudController {
     @RequestMapping("/GuardarRepuesto")
     public String guardarRepuestos(Model model, @RequestParam("nb") String nombres, @RequestParam("cu") String costoUnitario, @RequestParam("ci") String cantidadInventario) throws ParseException {
         generalService.registrarRepuesto(nombres, Integer.parseInt(costoUnitario), Integer.parseInt(cantidadInventario));
+        System.out.println("entro");
         return gestionarRepuestos(model);
     }
 
@@ -422,12 +423,45 @@ public class CrudController {
 
     }
     // ------------------------------ Repuestos-Reparacion---------------------------------
-    @RequestMapping("/VerRepuestoReparacion")
-    public String verRepuestoReparacion(Model model, @RequestParam("nd") String id_Orden) {
-        List<Reparacion> reparacions = generalService.getReparaciones();
-        model.addAttribute("reparaciones", reparacions);
-        OrdenReparacion orden = generalService.getOrdenReparacionById(id_Orden);
-        model.addAttribute("orden", orden);
-        return "";
+    @RequestMapping("/GestionarRepuestosAsignados")
+    public String GestionarRepuestosAsignados(Model model,@RequestParam("nd") int id_Reparacion) {
+        List<String>  repuestosUsados  = generalService.getRepuestoReparacionById(id_Reparacion);
+        List<Integer>  cantidad  = generalService.getCantidadRepuestosUsados(id_Reparacion);
+        System.out.println(repuestosUsados);
+        model.addAttribute("cantidad", cantidad);
+        model.addAttribute("repuestosUsados", repuestosUsados);
+        model.addAttribute("reparacion", id_Reparacion);
+        return"gestionarRepuestoAsignados";
+    }
+
+    @RequestMapping("/RegistrarRepuestoReparacion")
+    public String registrarRepuestoReparacion(Model model,@RequestParam("nd") int id_Reparacion) {
+        List<Servicios> servicios = generalService.getServicios();
+        model.addAttribute("servicios", servicios);
+        model.addAttribute("reparacion", id_Reparacion);
+        return "registrarRepuestosAReparacion";
+    }
+
+    @RequestMapping("/GuardarRepuestoReparacion")
+    public String guardarRepuestoReparacion(Model model, @RequestParam("ct") int costo, @RequestParam("nd") int id_orden,
+                                    @RequestParam("ids") int id_servicio ,@RequestParam("fh") String fecha ) throws ParseException {
+       /* DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();*/
+        generalService.registrarReparacion(costo,fecha,id_servicio, id_orden);
+        return gestionarReparaciones(model,id_orden);
+    }
+    @RequestMapping("/EliminarRepuestoAsignado")
+    public String EliminarRepuestoAsignado(Model model, @RequestParam("nd") int id_reparacion) throws ParseException {
+        generalService.eliminarReparacion(id_reparacion);
+       /* model.addAttribute("id_orden", id_Orden);*/
+        return "eliminacionReparacionExitosa";
+    }
+
+    @RequestMapping("/ConfirmacionEliminarRepuestoAsignado")
+    public String ConfirmacionEliminarRepuestoAsignado(Model model, @RequestParam("nd") int id_repuesto) throws ParseException {
+        model.addAttribute("id_repuesto", id_repuesto);
+  /*      model.addAttribute("id_orden", id_Orden);*/
+        return "eliminarReparacion";
+
     }
 }

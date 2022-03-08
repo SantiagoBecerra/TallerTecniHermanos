@@ -102,7 +102,7 @@
     </div>
 </div>
 <div class="center-1 card text-center">
-    <h3 class="mt-4">REGISTRAR DOCENTE</h3>
+    <h3 class="mt-4">Modificar Servicio</h3>
     <div class="container mt-4 mb-4">
         <div class="row">
             <div class="col">
@@ -118,26 +118,19 @@
                                 <input class="form-control" id="nb" name="nb"
                                        th:value="${doce.nombre_servicio}" th:placeholder="${doce.nombre_servicio}">
                             </div>
-
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
-                            <button type="button" class="btn btn-primary">
-                                <a th:href="@{/GestionarServicios}" class="btn-primary"
-                                   style="color: #FF0000">Cancelar</a>
-                            </button>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                                <button type="button" class="btn btn-primary">
+                                    <a th:href="@{/GestionarServicios}" class="btn-primary"
+                                       style="color: #FF0000">Cancelar</a>
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-</div>
-</div>
-
-</div>
-
 </body>
-
-
 </html>

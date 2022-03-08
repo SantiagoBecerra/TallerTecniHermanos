@@ -13,6 +13,7 @@
 
 </head>
 <body>
+
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 15%; height : 100%;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <img src="images/logoColegio.png" class="card-img-top"
@@ -61,7 +62,7 @@
             </a>
         </li>
         <li>
-            <a th:href="@{/GestionarRepuestos}" class="nav-link text-white">
+            <a th:href="@{/GestionarRepuestos}" class="nav-link active">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#people-circle"/>
                 </svg>
@@ -69,7 +70,7 @@
             </a>
         </li>
         <li>
-            <a th:href="@{/GestionarOrdenes}" class="nav-link active">
+            <a th:href="@{/GestionarOrdenes}" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#people-circle"/>
                 </svg>
@@ -101,19 +102,18 @@
     </div>
 </div>
 
-<div class="  center text-center"th:each="orden:${orden}">
-    <h3 class="mt-4"  th:text=" 'Gestion de reparaciones de la orden No: ' + ${orden.id_orden}"></h3>
+<div class=" center text-center" th:each="reparacion:${reparacion}">
+    <h3 class="mt-4" th:text=" 'Repuestos asignados a la reparacion No: ' + ${reparacion}"></h3>
     <div class="container mt-4 mb-4">
         <div class="row">
             <div class="col-md-auto">
-
                 <div class="card" style="width: 10rem;">
-                    <img src="images/gestionarOrdenes.png" class="card-img-top" alt="...">
+                    <img src="images/gestionarRpuestos.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a th:href="@{/RegistrarReparacion(nd=${orden.id_orden})}" class="btn btn-primary">Registrar</a>
+                        <a th:href="@{/RegistrarRepuestoReparacion(nd=${reparacion})}"
+                           class="btn btn-primary">Añadir</a>
                     </div>
                 </div>
-
             </div>
             <div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -123,48 +123,28 @@
                             </ul>
                             <form class="d-flex">
                                 <input type="search" id="myInput" onkeyup='tableSearch()'
-                                       placeholder="Buscar por id reparacion">
+                                       placeholder="Buscar por nombre">
                             </form>
                         </div>
                     </div>
                 </nav>
                 <div class="datagrid mt-4">
-                    <table class="content-table myTable">
+                    <table class="content-table">
                         <thead>
                         <tr>
-                            <th class="text-center">Id_Reparacion</th>
-                            <th class="text-center">Costo de servicio</th>
-                            <th class="text-center">Fecha_Reparacion</th>
-                            <th class="text-center">Costo Total</th>
-                            <th class="text-center">Servicio</th>
-                            <th class="text-center">Editar</th>
-                            <th class="text-center">Eliminar</th>
-                            <th class="text-center">Repuestos</th>
+                            <th class="text-center">Nombre Repuesto</th>
+                            <th class="text-center">Cantidad</th>
+                            <th class="text-center">Borrar</th>
                         </tr>
                         </thead>
-                        <tbody th:each="reparacion:${reparaciones}">
+                        <tbody th:each="repuestos,iterStat:${repuestosUsados}">
                         <tr>
-                            <td th:text="${reparacion.id_reparacion}"></td>
-                            <td th:text="${reparacion.costo_servicio}"></td>
-                            <td th:text="${reparacion.fecha_reparacion}"></td>
-                            <td th:text="${reparacion.costo_total_reparacion}"></td>
-                            <td th:text="${reparacion.id_servicio.nombre_servicio}"></td>
-                            <td>
-                                <button class="butonEdit"><a th:href="@{/ModificarReparacion(nd=${reparacion.id_reparacion},no=${reparacion.id_orden.id_orden})}"
-                                                             class="btn "><img src="images/pencil.png"
-                                                                               class="imagesEdi"/></a></button>
-                            </td>
-                            <td>
-                                <button class="butonEdit"><a
-                                    th:href="@{/ConfirmacionEliminarReparacion(nd=${reparacion.id_reparacion},ido =${reparacion.id_orden.id_orden})}" class="btn "><img
-                                    src="images/trash.png" class="imagesEdi"/></a></button>
-                            </td>
-                            <td>
-                                <button class="butonEdit"><a th:href="@{/GestionarRepuestosAsignados(nd=${reparacion.id_reparacion})}"
-                                                             class="btn "><img src="images/ver.jpg" class="imagesEdi"/></a>
-                                </button>
-                            </td>
-
+                            <td th:text="${repuestos}"></td>
+                            <td th:text="${cantidad[__${iterStat.index}__]}"></td>
+                            <td><button class="butonEdit"><a
+                                    th:href="@{/ConfirmacionEliminarRepuestoAsignado(nd=${cantidad[__${iterStat.index}__]})}"
+                                class="btn "><img src="images/trash.png" class="imagesEdi"/></a>
+                            </button></td>
                         </tr>
                         </tbody>
                     </table>
@@ -195,5 +175,6 @@
     }
 </script>
 </body>
+
 
 </html>

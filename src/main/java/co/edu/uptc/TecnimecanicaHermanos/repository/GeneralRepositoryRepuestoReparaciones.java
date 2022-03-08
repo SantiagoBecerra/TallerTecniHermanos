@@ -25,10 +25,16 @@ public interface GeneralRepositoryRepuestoReparaciones extends JpaRepository<Rep
     @org.springframework.transaction.annotation.Transactional
     @Query(value= " INSERT INTO reparaciones_repuestos (cantidad_repuesto,id_repuesto,id_reparacion) VALUES(?,?,?)",nativeQuery = true)
     public void registrarRepuestoReparacion(int cantidad,int repuesto,int idReparacion);
-    
-    @Query(value= "SELECT * FROM reparaciones_repuestos WHERE id_reparacion = ?1 ",nativeQuery = true)
-	public OrdenReparacion getRepuestoReparacionById(String id);
-    
+
+    @Query(value= "SELECT re.nombre_repuesto FROM reparaciones_repuestos rp, repuestos re \n" +
+            "WHERE rp.id_reparacion = ?1 \n" +
+            "AND rp.id_repuesto = re.id_repuesto ",nativeQuery = true)
+	public List<String> getRepuestoReparacionById(int id_reparacion);
+
+    @Query(value= "SELECT rp.cantidad_repuesto FROM reparaciones_repuestos rp, repuestos re \n" +
+            "WHERE rp.id_reparacion = ?1 \n" +
+            "AND rp.id_repuesto = re.id_repuesto ",nativeQuery = true)
+    public List<Integer> getCantidadRepuestosUsados(int id_reparacion);
 }
 
 

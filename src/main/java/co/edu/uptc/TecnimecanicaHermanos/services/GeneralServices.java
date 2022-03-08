@@ -22,7 +22,6 @@ public class GeneralServices {
 	public final GeneralRepositoryOrdenReparacion generalRepositoryOrdenReparacion;
 	public final GeneralRepositoryRepuestoReparaciones generalRepositoryRepuestoReparacion;
 	public final GeneralRepositoryReparaciones generalRepositoryReparaciones;
-
 	public GeneralServices(GeneralRepositoryPersonas generalRepository,GeneralRepositoryServicios generalRepositoryServicios,GeneralRepositoryRepuestos generalRepositoryRepuestos
 			,GeneralRepositoryVehiculos generalRepositoryVehiculos,GeneralRepositoryOrdenReparacion generalRepositoryOrdenReparacion,GeneralRepositoryRepuestoReparaciones generalRepositoryRepuestoReparacion,
 						   GeneralRepositoryReparaciones generalRepositoryReparaciones) {
@@ -231,7 +230,11 @@ public class GeneralServices {
 		generalRepositoryRepuestoReparacion.registrarRepuestoReparacion(cantidad, idRepuesto, idReparacion);
 	}
 	
-	public void getRepuestoReparacionById(String idReparacion){
-		generalRepositoryRepuestoReparacion.getRepuestoReparacionById(idReparacion);
+	public List<String> getRepuestoReparacionById(int idReparacion){
+		return generalRepositoryRepuestoReparacion.getRepuestoReparacionById(idReparacion);
+	}
+
+	public List<Integer> getCantidadRepuestosUsados(int id_reparacion) {
+		return generalRepositoryRepuestoReparacion.getCantidadRepuestosUsados(id_reparacion);
 	}
 }

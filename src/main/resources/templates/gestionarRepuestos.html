@@ -115,12 +115,12 @@
 					<table class = "content-table">
 						<thead>
 							<tr>
-								<th>Numero Repuesto</th>
-								<th>Nombre</th>
-								<th>Costo Unitario</th>
-								<th>Cantidad Inventario</th>
-								<th>Editar</th>
-								<th>Eliminar</th>
+								<th class="text-center">Numero Repuesto</th>
+								<th class="text-center">Nombre</th>
+								<th class="text-center">Costo Unitario</th>
+								<th class="text-center">Cantidad Inventario</th>
+								<th class="text-center">Editar</th>
+								<th class="text-center">Eliminar</th>
 							</tr>
 						</thead>
 						<tbody  th:each="estudiante:${estudiantes}">
@@ -129,7 +129,7 @@
 								<td th:text="${estudiante.nombre_repuesto}"></td>
 								<td th:text="${estudiante.costo_unitario}"></td>
 								<td th:text="${estudiante.cantidad_inventario}"></td>
-								<td><button class="butonEdit"><a  th:href="@{/ModificarRepuesto(nb=${estudiante.id_repuesto})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/></button></td>
+								<td><button class="butonEdit"><a  th:href="@{/ModificarRepuesto(nb=${estudiante.id_repuesto})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/> </a></button></td>
 								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarRepuesto(nd=${estudiante.id_repuesto})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>
 							</tr>
 						</tbody>
