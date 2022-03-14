@@ -35,6 +35,19 @@ public interface GeneralRepositoryRepuestoReparaciones extends JpaRepository<Rep
             "WHERE rp.id_reparacion = ?1 \n" +
             "AND rp.id_repuesto = re.id_repuesto ",nativeQuery = true)
     public List<Integer> getCantidadRepuestosUsados(int id_reparacion);
+
+    @Query(value= "SELECT id_repuesto\n" +
+            "FROM reparaciones_repuestos\n" +
+            "WHERE id_reparacion = ?1",nativeQuery = true)
+    public List<Integer> getIdsRepuestos(int id_reparacion);
+
+    @Modifying
+    @org.springframework.transaction.annotation.Transactional
+    @Query(value= "DELETE FROM reparaciones_repuestos \n" +
+            "WHERE id_reparacion = ?2 \n" +
+            "AND id_repuesto = ?1",nativeQuery = true)
+    public void eliminarRepuestoAsignado(int id_repuesto, int id_reparacion);
+
 }
 
 

@@ -52,6 +52,16 @@ public interface GeneralRepositoryOrdenReparacion extends JpaRepository<OrdenRep
 
     @Modifying
     @org.springframework.transaction.annotation.Transactional
+    @Query(value = "UPDATE orden_reparaciones SET costo_total = (SELECT SUM(r.costo_total_reparacion) \n" +
+            "FROM reparaciones r, orden_reparaciones o\n" +
+            "WHERE r.id_orden = o.id_orden\n" +
+            "AND o.id_orden = ?1)\n" +
+            "WHERE id_orden = ?1",nativeQuery = true)
+    public void actualizarCostoTotal(int idOrden);
+
+
+    @Modifying
+    @org.springframework.transaction.annotation.Transactional
     @Query(value = "UPDATE orden_reparaciones SET diagnostico= ?2 WHERE id_orden = ?1",nativeQuery = true)
     public void actualizarCostoTotal(int idOrden, String diagnostico);
     

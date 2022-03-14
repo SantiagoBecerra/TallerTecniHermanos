@@ -66,7 +66,7 @@
       <li>
         <a th:href="@{/GestionarInventario}" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-          Inventario
+            Reportes
         </a>
       </li>
       
@@ -120,7 +120,6 @@
 								<th class="text-center">Costo Unitario</th>
 								<th class="text-center">Cantidad Inventario</th>
 								<th class="text-center">Editar</th>
-								<th class="text-center">Eliminar</th>
 							</tr>
 						</thead>
 						<tbody  th:each="estudiante:${estudiantes}">
@@ -130,8 +129,7 @@
 								<td th:text="${estudiante.costo_unitario}"></td>
 								<td th:text="${estudiante.cantidad_inventario}"></td>
 								<td><button class="butonEdit"><a  th:href="@{/ModificarRepuesto(nb=${estudiante.id_repuesto})}" class="btn "><img src="images/pencil.png" class="imagesEdi"/> </a></button></td>
-								<td><button class="butonEdit"><a  th:href="@{/ConfirmacionEliminarRepuesto(nd=${estudiante.id_repuesto})}" class="btn "><img src="images/trash.png" class="imagesEdi"/></a></button></td>
-							</tr>
+                            </tr>
 						</tbody>
 					</table>
 				</div>

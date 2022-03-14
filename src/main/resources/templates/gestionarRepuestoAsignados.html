@@ -82,7 +82,7 @@
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#people-circle"/>
                 </svg>
-                Inventario
+                Reportes
             </a>
         </li>
 
@@ -141,10 +141,12 @@
                         <tr>
                             <td th:text="${repuestos}"></td>
                             <td th:text="${cantidad[__${iterStat.index}__]}"></td>
-                            <td><button class="butonEdit"><a
-                                    th:href="@{/ConfirmacionEliminarRepuestoAsignado(nd=${cantidad[__${iterStat.index}__]})}"
-                                class="btn "><img src="images/trash.png" class="imagesEdi"/></a>
-                            </button></td>
+                            <td>
+                                <button class="butonEdit"><a
+                                    th:href="@{/ConfirmacionEliminarRepuestoAsignado(nd=${ids[__${iterStat.index}__]}, idr=${reparacion},ido=${orden})}"
+                                    class="btn "><img src="images/trash.png" class="imagesEdi"/></a>
+                                </button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -152,7 +154,10 @@
             </div>
         </div>
     </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a th:href="@{/GestionarReparaciones(nd = ${orden})}" class="btn btn-primary">Volver</a>
 
+    </div>
 </div>
 <script type="application/javascript">
     function tableSearch() {

@@ -206,6 +206,7 @@ public class GeneralServices {
 
 	public void registrarReparacion(Integer costo,String fecha,int id_servicio,int id_Orden){
 		generalRepositoryReparaciones.registrarReparacion(costo, fecha, id_servicio, id_Orden,costo);
+		generalRepositoryOrdenReparacion.actualizarCostoTotal(id_Orden);
 	}
 
 	public void eliminarReparacion(int id_reparacion) {
@@ -226,10 +227,11 @@ public class GeneralServices {
 
 	//----------------------------------Repuestos Reparacion---------------------------------------------
 	
-	public void registrarRepuestoReparacion(int cantidad,int idRepuesto,int idReparacion){
+	public void registrarRepuestoReparacion(int cantidad,int idRepuesto,int idReparacion, int id_orden){
 		generalRepositoryRepuestoReparacion.registrarRepuestoReparacion(cantidad, idRepuesto, idReparacion);
 		generalRepositoryRepuestos.actualizarCantidadRepuesto(idRepuesto,cantidad);
 		generalRepositoryReparaciones.actualizarReparacionCostoTotal(idReparacion);
+		generalRepositoryOrdenReparacion.actualizarCostoTotal(id_orden);
 	}
 	
 	public List<String> getRepuestoReparacionById(int idReparacion){
@@ -238,5 +240,14 @@ public class GeneralServices {
 
 	public List<Integer> getCantidadRepuestosUsados(int id_reparacion) {
 		return generalRepositoryRepuestoReparacion.getCantidadRepuestosUsados(id_reparacion);
+	}
+	public List<Integer> getIdsRepuestosUsados(int id_reparacion) {
+		return generalRepositoryRepuestoReparacion.getIdsRepuestos(id_reparacion);
+	}
+
+	public void eliminarRepuestoAsignado(int id_repuesto, int id_reparacion, int id_orden) {
+		generalRepositoryRepuestoReparacion.eliminarRepuestoAsignado(id_repuesto,id_reparacion);
+		generalRepositoryReparaciones.actualizarReparacionCostoTotal(id_reparacion);
+		generalRepositoryOrdenReparacion.actualizarCostoTotal(id_orden);
 	}
 }

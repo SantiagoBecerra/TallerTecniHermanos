@@ -85,7 +85,7 @@
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#people-circle"/>
                 </svg>
-                Inventario
+                Reportes
             </a>
         </li>
     </ul>
@@ -137,7 +137,7 @@
                             <div class="mb-4 mt-4">
                                 <button type="submit" class="btn btn-primary">Registrar
                                 </button>
-                                <a th:href="@{/GestionarRepuestos}" class="btn btn-primary">Cancelar</a>
+                                <a th:href="@{/GestionarRepuestosAsignados(nd=${reparacion}, ido=${orden})}" class="btn btn-primary">Cancelar</a>
                             </div>
                         </form>
                     </div>
