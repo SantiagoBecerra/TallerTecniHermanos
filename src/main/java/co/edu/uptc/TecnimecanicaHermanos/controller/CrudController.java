@@ -456,4 +456,12 @@ public class CrudController {
         return "eliminarRepuestoReparacion";
 
     }
+    // ------------------------------ Generar Factura--------------------------------
+    @RequestMapping("/GenerarFactura")
+    public String generarFactura(Model model, @RequestParam("nd") String idOrden) {
+        OrdenReparacion orden = generalService.getOrdenReparacionById(idOrden);
+        model.addAttribute("ordene", orden);
+        return "factura";
+    }
+
 }

@@ -1,10 +1,22 @@
 $(document).ready(function () {
     $('.search_select_box select').selectpicker();
-    document.getElementById("fh").setAttribute("max", getToday());
+     var val = $("#idre").val();
+     console.log(val)
+    $("input").attr({
+        "max" : val,        // substitute your own
+        "min" : 2          // values (or variables) here
+    });
+   /* document.getElementById("fh").setAttribute("max", getToday());*/
 })
-document.getElementyId("agregar").onclick = function () {
+$('options').change(function(){
+    var val = $("#idre").val();
+    console.log(val);
+    $('input[type=number]').attr('max', val);
+});
+/*document.getElementById("agregar").onclick = function () {
     addRepuesto()
-};
+};*/
+
 
 function addRepuesto() {
 

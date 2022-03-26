@@ -7,156 +7,82 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles/styleGestionarEstudiante.css"/>
+    <link rel="stylesheet" href="styles/styleFactura.css"/>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
     <title>Tecnimecanica Hermanos</title>
 
 </head>
 <body>
-
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 15%; height : 100%;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <img src="images/logoColegio.png" class="card-img-top"
-             alt="...">
-    </a>
-    <hr class="barra">
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a th:href="@{/inicioAdmin}" class="nav-link text-white" aria-current="page">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#home"/>
-                </svg>
-                Home
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/GestionarClientes}" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#speedometer2"/>
-                </svg>
-                Clientes
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/GestionarEmpleados}" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#table"/>
-                </svg>
-                Empleados
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/GestionarVehiculos}" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#grid"/>
-                </svg>
-                Vehiculos
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/GestionarServicios}" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#people-circle"/>
-                </svg>
-                Servicios
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/GestionarRepuestos}" class="nav-link">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#people-circle"/>
-                </svg>
-                Repuestos
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/GestionarOrdenes}" class="nav-link text-white active">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#people-circle"/>
-                </svg>
-                Ordenes
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/GestionarInventario}" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#people-circle"/>
-                </svg>
-                Reportes
-            </a>
-        </li>
-
-    </ul>
-    <hr>
-    <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
-           data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="images/icon.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>Administrador</strong>
+<div class="wrapper">
+    <div class="sidebar">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto">
+            <img src="images/logoColegio.png" class="card-img-top"
+                 alt="...">
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Configuracion</a></li>
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
+            <li><a th:href="@{/GestionarClientes}"><i class="fas fa-user"></i>Clientes</a></li>
+            <li><a th:href="@{/GestionarEmpleados}"><i class="fas fa-address-card"></i>Empleados</a></li>
+            <li><a th:href="@{/GestionarVehiculos}"><i class="fas fa-car"></i>Vehiculos</a></li>
+            <li><a th:href="@{/GestionarServicios}"><i class="fas fa-wrench"></i>Servicios</a></li>
+            <li><a th:href="@{/GestionarRepuestos}" ><i class="fas fa-cogs"></i>Repuestos</a></li>
+            <li><a th:href="@{/GestionarOrdenes}"><i class="fas fa-file-invoice-dollar"></i>Ordenes</a></li>
+            <li><a th:href="@{/GestionarInventario}"><i class="fas fa-poll"></i>Reportes</a></li>
         </ul>
+        <div class="social_media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
     </div>
-</div>
+    <div class="main_content"th:each="reparacion:${reparacion}">
+        <div class="header" th:text=" 'Repuestos asignados a la reparacion No: ' + ${reparacion}"></div>
+        <div class="info">
+            <div class="container-fluid mt-100 mb-100">
+                <div id = "ui-view">
+                    <div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container-fluid">
+                                    <a th:href="@{/RegistrarRepuestoReparacion(nd=${reparacion},ido=${orden})}" class="btn btn-primary button-add">Añadir Repuesto</a>
+                                    <form class="d-flex search-div">
+                                        <input type="search" id= "myInput" onkeyup='tableSearch()' placeholder="Buscar por nombre">
+                                    </form>
+                                </div>
+                                <div class="table-responsive-sm">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Nombre Repuesto</th>
+                                            <th class="text-center">Cantidad</th>
+                                            <th class="text-center">Borrar</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody th:each="repuestos,iterStat:${repuestosUsados}">
+                                        <tr>
+                                            <td th:text="${repuestos}"></td>
+                                            <td th:text="${cantidad[__${iterStat.index}__]}"></td>
+                                            <td>
+                                                <button class="butonEdit"><a
+                                                    th:href="@{/ConfirmacionEliminarRepuestoAsignado(nd=${ids[__${iterStat.index}__]}, idr=${reparacion},ido=${orden})}"
+                                                    class="btn "><img src="images/trash.png" class="imagesEdi"/></a>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a th:href="@{/GestionarReparaciones(nd = ${orden})}" class="btn btn-primary">Volver</a>
 
-<div class=" center text-center" th:each="reparacion:${reparacion}">
-    <h3 class="mt-4" th:text=" 'Repuestos asignados a la reparacion No: ' + ${reparacion}"></h3>
-    <div class="container mt-4 mb-4">
-        <div class="row">
-            <div class="col-md-auto">
-                <div class="card" style="width: 10rem;">
-                    <img src="images/gestionarRpuestos.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a th:href="@{/RegistrarRepuestoReparacion(nd=${reparacion},ido=${orden})}"
-                           class="btn btn-primary">Añadir</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            </ul>
-                            <form class="d-flex">
-                                <input type="search" id="myInput" onkeyup='tableSearch()'
-                                       placeholder="Buscar por nombre">
-                            </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </nav>
-                <div class="datagrid mt-4">
-                    <table class="content-table">
-                        <thead>
-                        <tr>
-                            <th class="text-center">Nombre Repuesto</th>
-                            <th class="text-center">Cantidad</th>
-                            <th class="text-center">Borrar</th>
-                        </tr>
-                        </thead>
-                        <tbody th:each="repuestos,iterStat:${repuestosUsados}">
-                        <tr>
-                            <td th:text="${repuestos}"></td>
-                            <td th:text="${cantidad[__${iterStat.index}__]}"></td>
-                            <td>
-                                <button class="butonEdit"><a
-                                    th:href="@{/ConfirmacionEliminarRepuestoAsignado(nd=${ids[__${iterStat.index}__]}, idr=${reparacion},ido=${orden})}"
-                                    class="btn "><img src="images/trash.png" class="imagesEdi"/></a>
-                                </button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a th:href="@{/GestionarReparaciones(nd = ${orden})}" class="btn btn-primary">Volver</a>
-
     </div>
 </div>
 <script type="application/javascript">
