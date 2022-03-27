@@ -44,7 +44,65 @@ public interface GeneralRepositoryOrdenReparacion extends JpaRepository<OrdenRep
 
     @Query(value= "SELECT * FROM orden_reparaciones WHERE id_empleado = ?1 ",nativeQuery = true)
     public List<OrdenReparacion> getOrdenReparacionByIdEmpleado(int id);
-    
+
+    @Query(value= "SELECT costo_total FROM orden_reparaciones\n" +
+            "WHERE id_orden = ?1 ",nativeQuery = true)
+    public Integer getCostoTotal(int id);
+
+    @Query(value= "SELECT p.nombres FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden = ?1 ",nativeQuery = true)
+    public String getOrdenNombres(int id_orden);
+
+    @Query(value= "SELECT p.apellidos FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden =?1",nativeQuery = true)
+    public String getOrdenApellidos(int id_orden);
+
+    @Query(value= "SELECT p.documento FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden = ?1 ",nativeQuery = true)
+    public String getOrdenDocumento(int id_orden);
+
+    @Query(value= "SELECT p.direccion FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden = ?1",nativeQuery = true)
+    public String getOrdenDireccion(int id_orden);
+
+    @Query(value= "SELECT p.telefono FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden = ?1",nativeQuery = true)
+    public String getOrdenTelefono(int id_orden);
+
+    @Query(value= "SELECT op.fecha_orden FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden = ?1",nativeQuery = true)
+    public String getOrdenFecha(int id_orden);
+
+    @Query(value= "SELECT v.placa FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden =?1",nativeQuery = true)
+    public String getOrdenPlaca(int id_orden);
+
+    @Query(value= "SELECT v.marca FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden = ?1",nativeQuery = true)
+    public String getOrdenMarca(int id_orden);
+
+    @Query(value= "SELECT v.modelo FROM orden_reparaciones op,vehiculos v,personas p\n" +
+            "WHERE op.placa = v.placa\n" +
+            "AND v.id_persona = p.id_persona\n" +
+            "AND op.id_orden = ?1",nativeQuery = true)
+    public String getOrdenModelo(int id_orden);
+
     @Modifying
     @org.springframework.transaction.annotation.Transactional
 	@Query(value = "UPDATE orden_reparaciones SET diagnostico= ?2 WHERE id_orden = ?1",nativeQuery = true)
@@ -64,7 +122,12 @@ public interface GeneralRepositoryOrdenReparacion extends JpaRepository<OrdenRep
     @org.springframework.transaction.annotation.Transactional
     @Query(value = "UPDATE orden_reparaciones SET diagnostico= ?2 WHERE id_orden = ?1",nativeQuery = true)
     public void actualizarCostoTotal(int idOrden, String diagnostico);
-    
+
+    @Query(value= "SELECT  CONCAT(p.id_persona, \" \", p.nombres,\" \",p.apellidos) FROM orden_reparaciones op, personas p\n" +
+            "WHERE op.id_empleado = p.id_persona\n" +
+            "AND op.id_orden = ?1",nativeQuery = true)
+    public String getOrdenMecanico(int idOrden);
+
 }
 
 

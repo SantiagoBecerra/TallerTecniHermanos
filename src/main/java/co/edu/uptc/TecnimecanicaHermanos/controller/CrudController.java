@@ -381,22 +381,23 @@ public class CrudController {
     }
 
     @RequestMapping("/ModificarReparacion")
-    public String modificarReparacion(Model model, @RequestParam("nd") int idReparacion) {
+    public String modificarReparacion(Model model, @RequestParam("nd") int idReparacion,@RequestParam("no") int idOrden) {
         Reparacion reparacion = generalService.getReparacionById(idReparacion);
         model.addAttribute("reparacion", reparacion);
+        model.addAttribute("orden",idOrden);
         return "modificarReparacion";
     }
 
     @RequestMapping("/ActualizarReparacion")
     public String actualizarReparacion(Model model, @RequestParam("idr") int idReparacion,
                                   @RequestParam("fh") String fecha, @RequestParam("cr") int costo,@RequestParam("ido") int id_Orden) throws ParseException {
-        generalService.actualizarReparacion(idReparacion, fecha, costo);
+        generalService.actualizarReparacion(idReparacion, fecha, costo, id_Orden);
         return gestionarReparaciones(model,id_Orden);
     }
 
     @RequestMapping("/EliminarReparacion")
     public String eliminarReparacion(Model model, @RequestParam("nd") int id_reparacion,@RequestParam("ido") int id_Orden) throws ParseException {
-        generalService.eliminarReparacion(id_reparacion);
+        generalService.eliminarReparacion(id_reparacion,id_Orden);
         model.addAttribute("id_orden", id_Orden);
         return "eliminacionReparacionExitosa";
     }
@@ -458,9 +459,42 @@ public class CrudController {
     }
     // ------------------------------ Generar Factura--------------------------------
     @RequestMapping("/GenerarFactura")
-    public String generarFactura(Model model, @RequestParam("nd") String idOrden) {
-        OrdenReparacion orden = generalService.getOrdenReparacionById(idOrden);
-        model.addAttribute("ordene", orden);
+    public String generarFactura(Model model, @RequestParam("nd") int idOrden, @RequestParam("pl") String placa) {
+        List<Reparacion> reparaciones = generalService.getReparacionesById(idOrden);
+        List<String>  nombreRepuestos  = generalService.getNombreRepuestos(idOrden);
+        List<Integer>  idReparacion  = generalService.getIdsReparacion(idOrden);
+        List<Integer> cantidadRepuesto = generalService.getCantidad(idOrden);
+        List<Integer>  costoUnitario  = generalService.getCostoUnitario(idOrden);
+        List<Integer> costoTotal = generalService.getCostoTotal(idOrden);
+        String ordenNombre =generalService.getOrdenNombre(idOrden);
+        String ordenApellido =generalService.getOrdenApellidos(idOrden);
+        String ordenDocumento =generalService.getOrdenDocumento(idOrden);
+        String ordenDireccion =generalService.getOrdenDireccion(idOrden);
+        String ordenTelefono =generalService.getOrdenTelefono(idOrden);
+        String ordenFecha =generalService.getOrdenFecha(idOrden);
+        String ordenPlaca =generalService.getOrdenPlaca(idOrden);
+        String ordenMarca =generalService.getOrdeMarca(idOrden);
+        String ordenModelo =generalService.getOrdenModelo(idOrden);
+        String mecanico = generalService.getOrdenMecanico(idOrden);
+        int total = generalService.getCostoTotalOrden(idOrden);
+        model.addAttribute("reparaciones", reparaciones);
+        model.addAttribute("orden", idOrden);
+        model.addAttribute("nombre", ordenNombre);
+        model.addAttribute("apellidos", ordenApellido);
+        model.addAttribute("documento", ordenDocumento);
+        model.addAttribute("direccion", ordenDireccion);
+        model.addAttribute("telefono", ordenTelefono);
+        model.addAttribute("fecha", ordenFecha);
+        model.addAttribute("placa", ordenPlaca);
+        model.addAttribute("marca", ordenMarca);
+        model.addAttribute("modelo", ordenModelo);
+        model.addAttribute("repuestos", nombreRepuestos);
+        model.addAttribute("id_reparaciones", idReparacion);
+        model.addAttribute("cantidad", cantidadRepuesto);
+        model.addAttribute("costoUnitario", costoUnitario);
+        model.addAttribute("costoTotal", costoTotal);
+        model.addAttribute("costoTotalOrden",total);
+        model.addAttribute("mecanico",mecanico);
         return "factura";
     }
 

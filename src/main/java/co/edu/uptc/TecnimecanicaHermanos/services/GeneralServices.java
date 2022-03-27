@@ -178,6 +178,10 @@ public class GeneralServices {
 		generalRepositoryOrdenReparacion.eliminarOrdenReparacion(documento);
 
 	}
+	public Integer getCostoTotalOrden(int idOrden) {
+		return generalRepositoryOrdenReparacion.getCostoTotal(idOrden);
+	}
+
 
 	public OrdenReparacion getOrdenReparacionById(String id){
 		return generalRepositoryOrdenReparacion.getOrdenReparacionById(id);
@@ -196,6 +200,33 @@ public class GeneralServices {
 	public void actualizarOrdenReparacion(int idOrden ,String diagnostico) {
 		generalRepositoryOrdenReparacion.actualizarOrdenReparacion(idOrden, diagnostico);
 	}
+	public String getOrdenNombre(int id_orden){
+		return generalRepositoryOrdenReparacion.getOrdenNombres(id_orden);
+	}
+	public String getOrdenApellidos(int id){
+		return generalRepositoryOrdenReparacion.getOrdenApellidos(id);
+	}
+	public String getOrdenDocumento(int id){
+		return generalRepositoryOrdenReparacion.getOrdenDocumento(id);
+	}
+	public String getOrdenDireccion(int id){
+		return generalRepositoryOrdenReparacion.getOrdenDireccion(id);
+	}
+	public String getOrdenTelefono(int id){
+		return generalRepositoryOrdenReparacion.getOrdenTelefono(id);
+	}
+	public String getOrdenFecha(int id){
+		return generalRepositoryOrdenReparacion.getOrdenFecha(id);
+	}
+	public String getOrdenPlaca(int id){
+		return generalRepositoryOrdenReparacion.getOrdenPlaca(id);
+	}
+	public String getOrdeMarca(int id){
+		return generalRepositoryOrdenReparacion.getOrdenMarca(id);
+	}
+	public String getOrdenModelo(int id){
+		return generalRepositoryOrdenReparacion.getOrdenModelo(id);
+	}
 
 	//----------------------------------Reparaciones---------------------------------------------
 
@@ -209,9 +240,9 @@ public class GeneralServices {
 		generalRepositoryOrdenReparacion.actualizarCostoTotal(id_Orden);
 	}
 
-	public void eliminarReparacion(int id_reparacion) {
+	public void eliminarReparacion(int id_reparacion, int idOrden) {
 		generalRepositoryReparaciones.eliminarReparacion(id_reparacion);
-
+		generalRepositoryOrdenReparacion.actualizarCostoTotal(idOrden);
 	}
 
 	public Reparacion getReparacionById(int id_reparacion){
@@ -220,9 +251,10 @@ public class GeneralServices {
 	public List<Reparacion> getReparacionesById(int id){
 		return generalRepositoryReparaciones.getReparacionesByIdOrden(id);
 	}
-	public void actualizarReparacion(int idReparacion ,String fecha_reparacion,int costo_servicio) {
+	public void actualizarReparacion(int idReparacion ,String fecha_reparacion,int costo_servicio, int idOrden) {
 		generalRepositoryReparaciones.actualizarReparacion(idReparacion, fecha_reparacion,costo_servicio);
 		generalRepositoryReparaciones.actualizarReparacionCostoTotal(idReparacion);
+		generalRepositoryOrdenReparacion.actualizarCostoTotal(idOrden);
 	}
 
 	//----------------------------------Repuestos Reparacion---------------------------------------------
@@ -245,9 +277,30 @@ public class GeneralServices {
 		return generalRepositoryRepuestoReparacion.getIdsRepuestos(id_reparacion);
 	}
 
+	public List<Integer> getIdsReparacion(int idOrden){
+		return generalRepositoryRepuestoReparacion.getIdsReparaciones(idOrden);
+	}
+
+	public List<String> getNombreRepuestos(int idOrden) {
+		return generalRepositoryRepuestoReparacion.getNombreRepuestos(idOrden);
+	}
+	public List<Integer> getCantidad(int idOrden) {
+		return generalRepositoryRepuestoReparacion.getCantidad(idOrden);
+	}
+	public List<Integer> getCostoUnitario(int idOrden) {
+		return generalRepositoryRepuestoReparacion.getCostoUnitario(idOrden);
+	}
+	public List<Integer> getCostoTotal(int idOrden) {
+		return generalRepositoryRepuestoReparacion.getCostoTotal(idOrden);
+	}
+
 	public void eliminarRepuestoAsignado(int id_repuesto, int id_reparacion, int id_orden) {
 		generalRepositoryRepuestoReparacion.eliminarRepuestoAsignado(id_repuesto,id_reparacion);
 		generalRepositoryReparaciones.actualizarReparacionCostoTotal(id_reparacion);
 		generalRepositoryOrdenReparacion.actualizarCostoTotal(id_orden);
+	}
+
+	public String getOrdenMecanico(int idOrden) {
+		return generalRepositoryOrdenReparacion.getOrdenMecanico(idOrden);
 	}
 }

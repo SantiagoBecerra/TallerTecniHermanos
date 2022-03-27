@@ -4,7 +4,7 @@ $(document).ready(function () {
      console.log(val)
     $("input").attr({
         "max" : val,        // substitute your own
-        "min" : 2          // values (or variables) here
+        "min" : 1         // values (or variables) here
     });
    /* document.getElementById("fh").setAttribute("max", getToday());*/
 })
@@ -16,11 +16,6 @@ $('options').change(function(){
 /*document.getElementById("agregar").onclick = function () {
     addRepuesto()
 };*/
-
-
-function addRepuesto() {
-
-}
 function getToday(){
     let today = new Date();
     let dd = today.getDate();
@@ -34,5 +29,18 @@ function getToday(){
     }
     today = yyyy + '-' + mm + '-' + dd;
     return today
+}
+function PrintElem(elem)
+{
+    var printContents = document.getElementById(elem).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+
+    return true;
 }
 

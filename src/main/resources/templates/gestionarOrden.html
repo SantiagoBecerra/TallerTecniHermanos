@@ -27,7 +27,6 @@
             <li><a th:href="@{/GestionarServicios}"><i class="fas fa-wrench"></i>Servicios</a></li>
             <li><a th:href="@{/GestionarRepuestos}" ><i class="fas fa-cogs"></i>Repuestos</a></li>
             <li><a th:href="@{/GestionarOrdenes}"><i class="fas fa-file-invoice-dollar"></i>Ordenes</a></li>
-            <li><a th:href="@{/GestionarInventario}"><i class="fas fa-poll"></i>Reportes</a></li>
         </ul>
         <div class="social_media">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -72,7 +71,7 @@
                                             <td class="text-center" th:text="${estudiante.id_empleado.nombres}"></td>
                                             <td class="text-center" th:text="${estudiante.costo_total}"></td>
                                             <td class="text-center">
-                                                <button class="butonEdit"><a th:href="@{/GenerarFactura(nd=${estudiante.id_orden})}"
+                                                <button class="butonEdit"><a th:href="@{/GenerarFactura(nd=${estudiante.id_orden},pl=${estudiante.placa.placa})}"
                                                                              class="btn "><img src="images/invoice.png" class="imagesEdi"/></a></button>
                                             </td>
                                             <td class="text-center">

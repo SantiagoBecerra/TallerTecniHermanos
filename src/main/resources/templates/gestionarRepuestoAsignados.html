@@ -28,7 +28,6 @@
             <li><a th:href="@{/GestionarServicios}"><i class="fas fa-wrench"></i>Servicios</a></li>
             <li><a th:href="@{/GestionarRepuestos}" ><i class="fas fa-cogs"></i>Repuestos</a></li>
             <li><a th:href="@{/GestionarOrdenes}"><i class="fas fa-file-invoice-dollar"></i>Ordenes</a></li>
-            <li><a th:href="@{/GestionarInventario}"><i class="fas fa-poll"></i>Reportes</a></li>
         </ul>
         <div class="social_media">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -61,9 +60,9 @@
                                         </thead>
                                         <tbody th:each="repuestos,iterStat:${repuestosUsados}">
                                         <tr>
-                                            <td th:text="${repuestos}"></td>
-                                            <td th:text="${cantidad[__${iterStat.index}__]}"></td>
-                                            <td>
+                                            <td class="text-center" th:text="${repuestos}"></td>
+                                            <td class="text-center" th:text="${cantidad[__${iterStat.index}__]}"></td>
+                                            <td class="text-center">
                                                 <button class="butonEdit"><a
                                                     th:href="@{/ConfirmacionEliminarRepuestoAsignado(nd=${ids[__${iterStat.index}__]}, idr=${reparacion},ido=${orden})}"
                                                     class="btn "><img src="images/trash.png" class="imagesEdi"/></a>

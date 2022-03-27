@@ -41,6 +41,41 @@ public interface GeneralRepositoryRepuestoReparaciones extends JpaRepository<Rep
             "WHERE id_reparacion = ?1",nativeQuery = true)
     public List<Integer> getIdsRepuestos(int id_reparacion);
 
+    @Query(value= "SELECT r.id_reparacion FROM orden_reparaciones op,reparaciones r, reparaciones_repuestos rp,repuestos re\n" +
+            "WHERE op.id_orden = r.id_orden\n" +
+            "AND r.id_reparacion = rp.id_reparacion\n" +
+            "AND re.id_repuesto = rp.id_repuesto\n" +
+            "AND op.id_orden =?1",nativeQuery = true)
+    public List<Integer> getIdsReparaciones(int id_orden);
+
+    @Query(value= "SELECT re.nombre_repuesto FROM orden_reparaciones op,reparaciones r, reparaciones_repuestos rp,repuestos re\n" +
+            "WHERE op.id_orden = r.id_orden\n" +
+            "AND r.id_reparacion = rp.id_reparacion\n" +
+            "AND re.id_repuesto = rp.id_repuesto\n" +
+            "AND op.id_orden = ?1 ",nativeQuery = true)
+    public List<String> getNombreRepuestos(int id_orden);
+
+    @Query(value= "SELECT rp.cantidad_repuesto FROM orden_reparaciones op,reparaciones r, reparaciones_repuestos rp,repuestos re\n" +
+            "WHERE op.id_orden = r.id_orden\n" +
+            "AND r.id_reparacion = rp.id_reparacion\n" +
+            "AND re.id_repuesto = rp.id_repuesto\n" +
+            "AND op.id_orden = ?1 ",nativeQuery = true)
+    public List<Integer> getCantidad(int id_orden);
+
+    @Query(value= "SELECT re.costo_unitario FROM orden_reparaciones op,reparaciones r, reparaciones_repuestos rp,repuestos re\n" +
+            "WHERE op.id_orden = r.id_orden\n" +
+            "AND r.id_reparacion = rp.id_reparacion\n" +
+            "AND re.id_repuesto = rp.id_repuesto\n" +
+            "AND op.id_orden = ?1 ",nativeQuery = true)
+    public List<Integer> getCostoUnitario(int id_orden);
+
+    @Query(value= "SELECT rp.cantidad_repuesto*re.costo_unitario FROM orden_reparaciones op,reparaciones r, reparaciones_repuestos rp,repuestos re\n" +
+            "WHERE op.id_orden = r.id_orden\n" +
+            "AND r.id_reparacion = rp.id_reparacion\n" +
+            "AND re.id_repuesto = rp.id_repuesto\n" +
+            "AND op.id_orden = ?1",nativeQuery = true)
+    public List<Integer> getCostoTotal(int id_orden);
+
     @Modifying
     @org.springframework.transaction.annotation.Transactional
     @Query(value= "DELETE FROM reparaciones_repuestos \n" +
