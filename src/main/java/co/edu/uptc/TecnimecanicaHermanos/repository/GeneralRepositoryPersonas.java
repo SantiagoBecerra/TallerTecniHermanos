@@ -17,8 +17,8 @@ public interface GeneralRepositoryPersonas extends JpaRepository<Personas, Integ
 	
 //  ---------------------------    LOGIN    -----------------------------------
 	
-    @Query(value= "SELECT * FROM personas WHERE user LIKE %?1% AND pass LIKE %?2%",nativeQuery = true)
-    public Personas getUsuarioLogin(String usuario,String contrasenia);
+    @Query(value= "SELECT login(?1,?2);",nativeQuery = true)
+    public Integer getUsuarioLogin(String usuario,String contrasenia);
   
     
   //  -------------------------------Clientes---------------------------------------

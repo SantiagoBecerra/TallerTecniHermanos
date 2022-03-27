@@ -34,7 +34,7 @@ public class GeneralServices {
 		this.generalRepositoryReparaciones = generalRepositoryReparaciones;
 	}
 
-	public Personas getUsuarioLogin(String usuario,String contrasenia){
+	public Integer getUsuarioLogin(String usuario,String contrasenia){
 		return generalRepositoryPersonas.getUsuarioLogin(usuario, contrasenia);
 	}
 

@@ -34,8 +34,14 @@ html {
     height: 40px;
     width:300px;
 }
+
 .glyphicon-plus {
     color:#f64747; 
+}
+.label-name{
+    display: block;
+    text-align: center;
+    line-height: 150%;
 }
 .form_container {
     margin-top: 50px;

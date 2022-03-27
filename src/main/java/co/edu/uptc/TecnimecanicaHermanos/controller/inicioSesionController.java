@@ -26,11 +26,12 @@ public class inicioSesionController {
 
 	@RequestMapping("/search_user")
 	public String getUsuarioRegistrado(@RequestParam("u") String usuario,@RequestParam("c") String contrasenia, Model model){
-		Personas featured = generalService.getUsuarioLogin(usuario,contrasenia);
-		model.addAttribute("cantidad","hola"+ featured.getNombres()+" Usuario: "+featured.getUser()+" Contraseña: "+featured.getPass()+" Tipo usuario: "+ featured.getTipo_persona());
-		return "inicioAdmin";
+		if(generalService.getUsuarioLogin(usuario,contrasenia) >0){
+			return "inicioAdmin";
+		}else{
+			return "error";
+		}
 	}
-	
 	@RequestMapping("/inicioAdmin")
 	public String inicioAdmin(){
 		return "inicioAdmin";
