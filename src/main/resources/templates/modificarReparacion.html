@@ -47,28 +47,33 @@
                             <div class="card-body">
                                 <form th:action="@{/ActualizarReparacion(idr,fh,cr,ido )}">
                                     <div class="mb-4 mt-4">
+                                        <label id="rep"><strong>Id Reparacion</strong></label>
                                         <input class="form-control" id="idr" name="idr"
                                                th:value="${reparacion.id_reparacion}" th:placeholder="${reparacion.id_reparacion}"
                                                readonly>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="ord"><strong>Id Orden</strong></label>
                                         <input class="form-control" id="ido" name="ido"
                                                th:value="${reparacion.id_orden.id_orden}"
                                                th:placeholder="${reparacion.id_orden.id_orden}"
                                                readonly>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="serv"><strong>Servicio</strong></label>
                                         <input class="form-control" id="ids" name="ids"
                                                th:value="${reparacion.id_servicio.nombre_servicio}"
                                                th:placeholder="${reparacion.id_servicio.nombre_servicio}"
                                                readonly>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="fecha"><strong>Fecha de la reparacion</strong></label>
                                         <input name="fh" id="fh" type="date" class="form-control"
                                                th:value="${reparacion.fecha_reparacion}"
                                                th:placeholder="${reparacion.fecha_reparacion}">
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="costo"><strong>Costo del servicio</strong></label>
                                         <input class="form-control" id="cr" name="cr"
                                                th:value="${reparacion.costo_servicio}"
                                                th:placeholder="${reparacion.costo_servicio}">

@@ -47,21 +47,25 @@
                                 <form th:action="@{/ActualizarRepuesto(nd,nb,cu,ci)}">
                                     <div th:each="doce:${docente}">
                                         <div class="mb-4 mt-4">
+                                            <label id="rep"><strong>Id del repuesto</strong></label>
                                             <input class="form-control" id="nd" name="nd"
                                                    th:value="${doce.id_repuesto}"
                                                    th:placeholder="${doce.id_repuesto}" readonly>
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="nombre"><strong>Nombre del repuesto</strong></label>
                                             <input class="form-control" id="nb" name="nb"
                                                    th:value="${doce.nombre_repuesto}"
                                                    th:placeholder="${doce.nombre_repuesto}">
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="costo"><strong>Costo Unitario</strong></label>
                                             <input class="form-control" id="cu" name="cu"
                                                    th:value="${doce.costo_unitario}"
-                                                   th:placeholder="${doce.costo_unitario}">
+                                                   th:placeholder="${doce.costo_unitario}"readonly>
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="cantidad"><strong>Cantidad en inventario</strong></label>
                                             <input class="form-control" id="ci" name="ci"
                                                    th:value="${doce.cantidad_inventario}"
                                                    th:placeholder="${doce.cantidad_inventario}">

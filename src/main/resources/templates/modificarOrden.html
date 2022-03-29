@@ -47,36 +47,41 @@
                             <div class="card-body">
                                 <form th:action="@{/ActualizarOrden(ido,pl,dn,fc,ct,idr)}">
                                     <div class="mb-4 mt-4">
+                                        <label id="orden"><strong>Id Orden</strong></label>
                                         <input class="form-control" id="ido" name="ido"
                                                th:value="${ordene.id_orden}" th:placeholder="${ordene.id_orden}"
                                                readonly>
                                     </div>
-
                                     <div class="mb-4 mt-4">
+                                        <label id="fecha"><strong>Fecha orden</strong></label>
                                         <input class="form-control" id="fc" name="fc"
                                                th:value="${ordene.fecha_orden}" th:placeholder="${ordene.fecha_orden}" readonly>
                                     </div>
 
                                     <div class="mb-4 mt-4">
+                                        <label id="placa"><strong>Placa del Vehiculo</strong></label>
                                         <input class="form-control" id="pl" name="pl"
                                                th:value="${ordene.placa.placa}" th:placeholder="${ordene.placa.placa}" readonly>
                                     </div>
 
                                     <div class="mb-4 mt-4">
+                                        <label id="diag"><strong>Diagnostico</strong></label>
                                         <input class="form-control" id="dn" name="dn"
                                                th:value="${ordene.diagnostico}"
                                                th:placeholder="${ordene.diagnostico}">
                                     </div>
 
                                     <div class="mb-4 mt-4">
+                                        <label id="costo"><strong>Costo Total</strong></label>
                                         <input class="form-control" id="ct" name="ct"
                                                th:value="${ordene.costo_total}"
                                                th:placeholder="${ordene.costo_total}" readonly>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="marca"><strong>Mecanico Encargado</strong></label>
                                         <input class="form-control" id="idr" name="idr"
-                                               th:value="${ordene.id_empleado.apellidos}"
-                                               th:placeholder="${ordene.id_empleado.apellidos}" >
+                                               th:value="${ordene.id_empleado.nombres}"
+                                               th:placeholder="${ordene.id_empleado.nombres}" readonly>
                                     </div>
                                     <div class="container-fluid-1">
                                         <button type="submit" class="btn btn-primary">Actualizar</button>

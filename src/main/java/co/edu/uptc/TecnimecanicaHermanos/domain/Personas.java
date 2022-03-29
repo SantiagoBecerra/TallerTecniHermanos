@@ -39,13 +39,7 @@ public class Personas {
 	
 	@Column(name="tipo_empleado")
 	Character tipo_empleado;
-	
-	@Column(name="user")
-	String user;
-	
-	@Column(name="pass")
-	String pass;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personas")
     private List<Vehiculo> vehiculos;
 	
@@ -88,8 +82,6 @@ public class Personas {
 		this.telefono = telefono;
 		this.tipo_persona = tipo_persona;
 		this.tipo_empleado = tipo_empleado;
-		this.user = user;
-		this.pass = pass;
 	}
 
 	public Personas() {
@@ -162,22 +154,6 @@ public class Personas {
 
 	public void setTipo_empleado(char tipo_empleado) {
 		this.tipo_empleado = tipo_empleado;
-	}
-	
-	public String getPass() {
-		return pass;
-	}
-	
-	public String getUser() {
-		return user;
-	}
-	
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-	
-	public void setUser(String user) {
-		this.user = user;
 	}
 
 }

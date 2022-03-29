@@ -45,8 +45,9 @@
                             <div class="card-body">
                                 <form th:action="@{/GuardarReparacion(ct,nd,ids,fh)}">
                                     <div class="mb-4 mt-4">
+                                        <label id="costo"><strong>Costo mano de obra</strong></label>
                                         <input name="ct" id="ct" type="number" class="form-control"
-                                               placeholder="Costo Mano de Obra *"
+                                               placeholder="50000*"
                                                required>
                                     </div>
                                     <div class="search_select_box">
@@ -59,10 +60,12 @@
                                         </select>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="fecha"><strong>Fecha de Reparacion</strong></label>
                                         <input name="fh" id="fh" type="date" class="form-control"
-                                               placeholder="Fecha_Reparacion" required>
+                                               placeholder="03/18/2021" required>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="id-orden"><strong>Id Orden</strong></label>
                                         <input class="form-control" id="nd" name="nd"
                                                th:value="${orden.id_orden}" th:placeholder="'Orden: ' +${orden.id_orden} "
                                                readonly>

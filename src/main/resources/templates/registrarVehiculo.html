@@ -44,25 +44,31 @@
                             <div class="card-body">
                                 <form th:action="@{/GuardarVehiculo(pl,ml,mc,cl,anio,dc,idp)}">
                                     <div class="mb-4 mt-4">
-                                        <input name="pl" id="pl" class="form-control" placeholder="Placa*" required>
+                                        <label id="plate"><strong>Placa</strong></label>
+                                        <input name="pl" id="pl" class="form-control" placeholder="AWS478*" required>
                                     </div>
                                     <div class="mb-4 mt-4">
-                                        <input name="md" id="md" class="form-control" placeholder="Modelo*" required>
-                                    </div>
-                                    <div class="mb-4 mt-4">
-                                        <input name="mc" id="mc" type="text " class="form-control" placeholder="Marca *"
+                                        <label id="brand"><strong>Marca</strong></label>
+                                        <input name="mc" id="mc" type="text " class="form-control" placeholder="Chevrolet*"
                                                required>
                                     </div>
                                     <div class="mb-4 mt-4">
-                                        <input name="cl" id="cl" type="text " class="form-control" placeholder="color*"
+                                        <label id="model"><strong>Modelo</strong></label>
+                                        <input name="md" id="md" class="form-control" placeholder="Aveo*" required>
+                                    </div>
+                                    <div class="mb-4 mt-4">
+                                        <label id="color"><strong>Color</strong></label>
+                                        <input name="cl" id="cl" type="text " class="form-control" placeholder="Blanco*"
                                                required>
                                     </div>
                                     <div class="mb-4 mt-4">
-                                        <input name="anio" id="anio" type="number" class="form-control" placeholder="Año "
+                                        <label id="anio"><strong>Año</strong></label>
+                                        <input name="anio" id="anio" type="number" class="form-control" placeholder="2015*"
                                                required>
                                     </div>
                                     <div class="mb-4 mt-4">
-                                        <input name="dc" id="dc" type="text " class="form-control" placeholder="Descripcion *"
+                                        <label id="desc"><strong>Descripcion</strong></label>
+                                        <input name="dc" id="dc" type="text " class="form-control" placeholder="Llego en buena estado*"
                                                required>
                                     </div>
                                     <div class="search_select_box">

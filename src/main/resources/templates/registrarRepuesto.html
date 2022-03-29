@@ -46,15 +46,20 @@
                         <div class="card">
                             <div class="card-body">
                                 <form th:action="@{/GuardarRepuesto(nb,cu,ci)}">
-                                    <input name="nb" id="nb" type="text " class="form-control"
-                                           placeholder="Nombre *" required>
                                     <div class="mb-4 mt-4">
-                                        <input name="cu" id="cu" type="number" class="form-control"
-                                               placeholder="Costo Unitario " required>
+                                        <label id="nombre_rep"><strong>Nombre Repuesto</strong></label>
+                                    <input name="nb" id="nb" type="text " class="form-control"
+                                           placeholder="Deposito de combustible *" required>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="costo-u"><strong>Costo Unitario</strong></label>
+                                        <input name="cu" id="cu" type="number" class="form-control"
+                                               placeholder="34000* " required>
+                                    </div>
+                                    <div class="mb-4 mt-4">
+                                        <label id="cantidad"><strong>Cantidad al Inventario</strong></label>
                                         <input name="ci" id="ci" type="number" class="form-control"
-                                               placeholder="Cantidad Inventario *" required>
+                                               placeholder="20 *" required>
                                     </div>
                                     <div class="mb-4 mt-4">
                                         <div class="container-fluid-1">

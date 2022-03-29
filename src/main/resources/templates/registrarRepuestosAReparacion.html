@@ -49,11 +49,13 @@
                             <div class="card-body">
                                 <form th:action="@{/GuardarRepuestoReparacion(idr,ct,idre,ido)}">
                                     <div class="mb-4 mt-4">
+                                        <label id="id-orden"><strong>Id Orden</strong></label>
                                         <input class="form-control" id="ido" name="ido"
                                                th:value="${orden}" th:placeholder="'Orden: '+${orden} "
                                                readonly>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="nombre"><strong>Id Reparacion</strong></label>
                                         <input class="form-control" id="idr" name="idr"
                                                th:value="${reparacion}" th:placeholder="'Reparacion: ' +${reparacion} "
                                                readonly>
@@ -68,8 +70,9 @@
                                         </select>
                                     </div>
                                     <div class="mb-4 mt-4">
+                                        <label id="cantidad"><strong>Numero de repuestos</strong></label>
                                         <input name="ct" id="ct" type="number" class="form-control"
-                                               placeholder="Numero de repuestos *" required>
+                                               placeholder="*" required>
                                     </div>
                                     <div class="mb-4 mt-4">
                                         <div class="container-fluid-1">

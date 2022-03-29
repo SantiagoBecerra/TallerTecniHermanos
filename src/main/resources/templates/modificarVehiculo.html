@@ -45,40 +45,44 @@
                         <div class="card">
                             <div class="card-body">
                                 <form th:action="@{/ActualizarVehiculo(pl,md,mc,cl,anio,dc,idp)}">
-                                    <div th:each="doce:${docente}">
-
+                                    <div th:each="vehiculo:${vehiculo}">
                                         <div class="mb-4 mt-4">
+                                            <label id="placa"><strong>Placa del Vehiculo</strong></label>
                                             <input class="form-control" id="pl" name="pl"
-                                                   th:value="${doce.placa}" th:placeholder="${doce.placa}"
+                                                   th:value="${vehiculo.placa}" th:placeholder="${vehiculo.placa}"
                                                    readonly>
                                         </div>
-
                                         <div class="mb-4 mt-4">
-                                            <input class="form-control" id="md" name="md"
-                                                   th:value="${doce.modelo}" th:placeholder="${doce.modelo}">
-                                        </div>
-
-                                        <div class="mb-4 mt-4">
+                                            <label id="marca"><strong>Marca del Vehiculo</strong></label>
                                             <input class="form-control" id="mc" name="mc"
-                                                   th:value="${doce.marca}" th:placeholder="${doce.marca}">
+                                                   th:value="${vehiculo.marca}" th:placeholder="${vehiculo.marca}" readonly>
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="modelo"><strong>Modelo del Vehiculo</strong></label>
+                                            <input class="form-control" id="md" name="md"
+                                                   th:value="${vehiculo.modelo}" th:placeholder="${vehiculo.modelo}" readonly>
+                                        </div>
+                                        <div class="mb-4 mt-4">
+                                            <label id="color"><strong>Color</strong></label>
                                             <input class="form-control" id="cl" name="cl"
-                                                   th:value="${doce.color}" th:placeholder="${doce.color}">
+                                                   th:value="${vehiculo.color}" th:placeholder="${vehiculo.color}">
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="ani"><strong>Año del Vehiculo</strong></label>
                                             <input class="form-control" id="anio" name="anio"
-                                                   th:value="${doce.anio}" th:placeholder="${doce.anio}">
+                                                   th:value="${vehiculo.anio}" th:placeholder="${vehiculo.anio}" readonly>
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="desc"><strong>Descripcion del vehiculo</strong></label>
                                             <input class="form-control" id="dc" name="dc"
-                                                   th:value="${doce.descripcion}"
-                                                   th:placeholder="${doce.descripcion}">
+                                                   th:value="${vehiculo.descripcion}"
+                                                   th:placeholder="${vehiculo.descripcion}">
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="modelo"><strong>Documento del dueño del vehiculo</strong></label>
                                             <input class="form-control" id="idp" name="idp"
-                                                   th:value="${doce.personas.documento}"
-                                                   th:placeholder="${doce.personas.documento}" readonly>
+                                                   th:value="${vehiculo.personas.documento}"
+                                                   th:placeholder="${vehiculo.personas.nombres}" readonly>
                                         </div>
                                         <div class="container-fluid-1">
                                             <button type="submit" class="btn btn-primary">Actualizar</button>

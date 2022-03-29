@@ -48,11 +48,13 @@
                                 <form th:action="@{/ActualizarServicio(nb,nd)}">
                                     <div th:each="doce:${docente}">
                                         <div class="mb-4 mt-4">
+                                            <label id="ids"><strong>Id del servicio</strong></label>
                                             <input class="form-control" id="nd" name="nd"
                                                    th:value="${doce.id_servicio}"
                                                    th:placeholder="${doce.id_servicio}" readonly>
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="nombre"><strong>Nombre del servicio</strong></label>
                                             <input class="form-control" id="nb" name="nb"
                                                    th:value="${doce.nombre_servicio}" th:placeholder="${doce.nombre_servicio}">
                                         </div>

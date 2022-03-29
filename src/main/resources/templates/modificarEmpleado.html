@@ -48,28 +48,34 @@
                                 <form th:action="@{/ActualizarEmpleado(nd,nb,pa,tf,dc,te)}">
                                     <div th:each="doce:${docente}">
                                         <div class="mb-4 mt-4">
+                                            <label id="doc"><strong>Numero de Documento</strong></label>
                                             <input class="form-control" id="nd" name="nd"
                                                    th:value="${doce.documento}"
-                                                   th:placeholder="${doce.documento}">
+                                                   th:placeholder="${doce.documento}"readonly>
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="nombre"><strong>Nombres</strong></label>
                                             <input class="form-control" id="nb" name="nb"
                                                    th:value="${doce.nombres}" th:placeholder="${doce.nombres}">
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="apellidos"><strong>Apellidos</strong></label>
                                             <input class="form-control" id="ap" name="ap"
                                                    th:value="${doce.apellidos}"
                                                    th:placeholder="${doce.apellidos}">
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="telf"><strong>Telefono</strong></label>
                                             <input class="form-control" id="tf" name="tf"
                                                    th:value="${doce.telefono}" th:placeholder="${doce.telefono}">
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="direccion"><strong>Direccion</strong></label>
                                             <input class="form-control" id="dc" name="dc"
                                                    th:value="${doce.direccion}" th:placeholder="${doce.direccion}">
                                         </div>
                                         <div class="mb-4 mt-4">
+                                            <label id="tipo"><strong>Tipo de Empleado</strong></label>
                                             <select name="te" id="te" class="form-select"
                                                     aria-label="Default select example">
                                                 <option name="te" id="te" value="M" required>Mecanico</option>

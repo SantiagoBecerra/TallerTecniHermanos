@@ -44,21 +44,26 @@
                         <div class="card-body">
                             <form th:action="@{/GuardarCliente(nd,nb,pa,sa,fn,tf,cd,dc)}">
                                 <div class="mb-4 mt-4">
-                                    <input name="nd" id="nd" class="form-control" placeholder="Numero Documento *" required>
+                                    <label id="doc"><strong>Numero de Documento</strong></label>
+                                    <input name="nd" id="nd" class="form-control" placeholder="10425323424*" required>
                                 </div>
                                 <div class="mb-4 mt-4">
-                                    <input name="ap" id="ap" class="form-control" placeholder="Apellidos *" required>
-                                </div>
-                                <div class="mb-4 mt-4">
-                                    <input name="nb" id="nb" type="text " class="form-control" placeholder="Nombres *"
+                                    <label id="nombre"><strong>Nombres</strong></label>
+                                    <input name="nb" id="nb" type="text " class="form-control" placeholder="Carlos*"
                                            required>
                                 </div>
                                 <div class="mb-4 mt-4">
-                                    <input name="tf" id="tf" type="number" class="form-control" placeholder="Telefono "
+                                    <label id="apellido"><strong>Apellidos</strong></label>
+                                    <input name="ap" id="ap" class="form-control" placeholder="Rodriguez*" required>
+                                </div>
+                                <div class="mb-4 mt-4">
+                                    <label id="tel"><strong>Telefono</strong></label>
+                                    <input name="tf" id="tf" type="number" class="form-control" placeholder="3153341456*"
                                            required>
                                 </div>
                                 <div class="mb-4 mt-4">
-                                    <input name="dc" id="dc" type="text " class="form-control" placeholder="Direccion *"
+                                    <label id="direc"><strong>Direccion</strong></label>
+                                    <input name="dc" id="dc" type="text " class="form-control" placeholder="Calle 9 # 12-23*"
                                            required>
                                 </div>
                                 <div class="mb-4 mt-4">

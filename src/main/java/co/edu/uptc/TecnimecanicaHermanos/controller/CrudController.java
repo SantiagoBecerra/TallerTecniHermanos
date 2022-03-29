@@ -260,8 +260,8 @@ public class CrudController {
 
     @RequestMapping("/ModificarVehiculo")
     public String modificarVehiculo(Model model, @RequestParam("nd") String idDocente) {
-        Vehiculo docente = generalService.getVehiculoById(idDocente);
-        model.addAttribute("docente", docente);
+        Vehiculo vehiculo = generalService.getVehiculoById(idDocente);
+        model.addAttribute("vehiculo", vehiculo);
         List<Personas> clientes = generalService.getClientes();
         model.addAttribute("clientes", clientes);
         return "modificarVehiculo";
@@ -334,8 +334,7 @@ public class CrudController {
     }
 
     @RequestMapping("/ActualizarOrden")
-    public String actualizarOrden(Model model, @RequestParam("ido") String idOrden, @RequestParam("pl") String placa, @RequestParam("dn") String diagnostico,
-                                  @RequestParam("fc") String fecha, @RequestParam("idr") String responsable) throws ParseException {
+    public String actualizarOrden(Model model, @RequestParam("ido") String idOrden, @RequestParam("dn") String diagnostico) throws ParseException {
         generalService.actualizarOrdenReparacion(Integer.parseInt(idOrden), diagnostico);
         return gestionarOrden(model);
     }
